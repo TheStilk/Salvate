@@ -3,6 +3,7 @@
 {% block title %}Register - Salvate{% endblock %}
 
 {% block content %}
+<div class="py-20">
 <div class="auth-container">
     <div class="auth-box">
         <div class="text-center mb-8">
@@ -26,7 +27,7 @@
                 <span><b><s>━━━━━━━━━━━━━━━━━</s> OR <s>━━━━━━━━━━━━━━━━━</s></b></span>
             </div>
         </div>
-        <form id="registerForm" action="/auth/register" method="POST" class="space-y-6">
+        <form id="registerForm" action="/auth/register" method="POST" class="mt-6">
             <div class="form-group">
                 <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email address</label>
                 <input type="email" id="email" name="email" required 
@@ -52,7 +53,7 @@
                     placeholder="Create a password">
             </div>
             <div class="flex items-center mb-6 gap-2">
-                <input type="checkbox" id="terms" name="terms" required class="h-4 w-4 text-purple-500 focus:ring-purple-500 border-gray-700 rounded">
+                <input type="checkbox" id="terms" name="terms" required class="text-purple-500 focus:ring-purple-500 border-gray-700 rounded">
                 <label for="terms" class="ml-2 block text-sm text-gray-300">
                     I agree to the <a href="/terms" class="text-purple-400 hover:text-purple-300 transition">Terms</a> and <a href="/privacy" class="text-purple-400 hover:text-purple-300 transition">Privacy Policy</a>
                 </label>
@@ -69,6 +70,7 @@
             </p>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}
 

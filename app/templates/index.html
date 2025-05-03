@@ -58,6 +58,82 @@
         </div>
     </div>
 </div>
+
+<div class="pricing py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Choose Your Plan</h2>
+        <p class="text-gray-400 text-center mb-12">Flexible options for every need</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="justify-content">
+                    <div class="pricing-header">
+                        <h3 class="text-2xl font-bold text-purple-400">Free</h3>
+                        <div class="price">
+                            <span class="text-4xl font-bold text-white">$0</span>
+                            <span class="text-gray-400">/forever</span>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li>Track up to 5 subscriptions</li>
+                        <li>Basic analytics</li>
+                        <li>Email notifications</li>
+                        <li>Community support</li>
+                    </ul>
+                    <div>
+                        <button class="btn-outline w-full mt-6 p-2 rounded-md">Get Started</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <h3 class="text-2xl font-bold text-purple-400">Pro</h3>
+                    <div class="price">
+                        <span class="text-4xl font-bold text-white">$4.99</span>
+                        <span class="text-gray-400">/month</span>
+                    </div>
+                    <div class="billing-options">
+                        <button class="active">Monthly</button>
+                        <button>Yearly</button>
+                    </div>
+                </div>
+                <ul class="features-list">
+                    <li>Unlimited subscriptions</li>
+                    <li>Advanced analytics</li>
+                    <li>Custom notifications</li>
+                    <li>Priority support</li>
+                    <li>Export data</li>
+                </ul>
+                <button class="btn-primary w-full mt-6 p-2 rounded-md">Subscribe Now</button>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="text-2xl font-bold text-purple-400">Business</h3>
+                    <div class="price">
+                        <span class="text-4xl font-bold text-white">$9.99</span>
+                        <span class="text-gray-400">/month</span>
+                    </div>
+                    <div class="billing-options">
+                        <button class="active">Monthly</button>
+                        <button>Yearly</button>
+                    </div>
+                </div>
+                <ul class="features-list">
+                    <li>Everything in Pro</li>
+                    <li>Team collaboration</li>
+                    <li>Custom branding</li>
+                    <li>Advanced reporting</li>
+                    <li>Dedicated support</li>
+                    <li>SSO integration</li>
+                </ul>
+                <button class="btn-primary w-full mt-6 p-2 rounded-md">Contact Sales</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_css %}
@@ -103,14 +179,115 @@
     .feature-card:hover {
         transform: translateY(-5px);
     }
+
+    .pricing {
+        background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.9));
+    }
+
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .pricing-card {
+        background: rgba(31, 41, 55, 0.7);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.2s ease;
+        position: relative;
+    }
+
+    .pricing-card.featured {
+        border: 1px solid rgba(147, 51, 234, 0.3);
+        background: linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(31, 41, 55, 0.7));
+    }
+
+    .pricing-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: linear-gradient(135deg, #9333ea, #4f46e5);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .pricing-header {
+        margin-bottom: 2rem;
+    }
+
+    .price {
+        margin: 1rem 0;
+    }
+
+    .billing-options {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .billing-options button {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.5rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.875rem;
+        transition: all 0.2s ease;
+    }
+
+    .billing-options button.active {
+        background: linear-gradient(135deg, #9333ea, #4f46e5);
+        color: white;
+        border-color: transparent;
+    }
+
+    .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+        text-align: left;
+    }
+
+    .features-list li {
+        color: rgba(255, 255, 255, 0.7);
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .features-list li::before {
+        content: '✓';
+        color: #9333ea;
+        margin-right: 0.75rem;
+        font-weight: bold;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
     
     @media (max-width: 768px) {
         .hero {
             padding: 6rem 1rem;
         }
-
         
         .features-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .pricing-grid {
             grid-template-columns: 1fr;
         }
     }
