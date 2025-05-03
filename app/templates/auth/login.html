@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Salvate{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">Welcome back</h1>
+            <p class="text-gray-400">Enter your credentials to access your account</p>
+        </div>
+        <button type="button" class="w-full flex items-center justify-normal gap-8 bg-white text-gray-800 font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-lg hover:bg-gray-100 mb-6">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9588 10.7273C18.9588 10.0182 18.8974 9.33637 18.7834 8.68182H9.69482V12.55H14.8883C14.6646 13.8 13.9847 14.8591 12.9627 15.5682V18.0773H16.0814C17.9061 16.3364 18.9588 13.7727 18.9588 10.7273Z" fill="#4285F4"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.69488 20.5C12.3004 20.5 14.4848 19.6045 16.0814 18.0772L12.9627 15.5681C12.0986 16.1681 10.9932 16.5227 9.69488 16.5227C7.18149 16.5227 5.05411 14.7636 4.29527 12.4H1.07129V14.9909C2.65915 18.2591 5.92261 20.5 9.69488 20.5Z" fill="#34A853"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29531 12.3999C4.10231 11.7999 3.99265 11.159 3.99265 10.4999C3.99265 9.84085 4.10231 9.19994 4.29531 8.59994V6.00903H1.07133C0.417763 7.35903 0.0449219 8.88631 0.0449219 10.4999C0.0449219 12.1136 0.417763 13.6409 1.07133 14.9909L4.29531 12.3999Z" fill="#FBBC05"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.69488 4.47727C11.1117 4.47727 12.3837 4.98182 13.3838 5.97273L16.1516 3.10455C14.4804 1.49091 12.296 0.5 9.69488 0.5C5.92261 0.5 2.65915 2.74091 1.07129 6.00909L4.29527 8.6C5.05411 6.23636 7.18149 4.47727 9.69488 4.47727Z" fill="#EA4335"/>
+            </svg>    
+            Continue with Google
+        </button>
+        <div class="relative mb-6">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+                <span><b><s>━━━━━━━━━━━━━━━━━</s> OR <s>━━━━━━━━━━━━━━━━━</s></b></span>
+            </div>
+        </div>
+        <form id="loginForm" action="/auth/login" method="POST" class="space-y-6">
+            <div class="form-group">
+                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email address</label>
+                <input type="email" id="email" name="username" required 
+                    class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <div class="flex items-center justify-between mb-2">
+                    <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                </div>
+                <input type="password" id="password" name="password" required 
+                    class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="Enter your password">
+            </div>
+            <div>
+                <a href="/auth/forgot-password" class="text-sm text-purple-400 hover:text-purple-300 transition">Forgot password?</a>
+            </div>
+            <div class="flex items-center mb-6 gap-2">
+                <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-purple-500 focus:ring-purple-500 border-gray-700 rounded">
+                <label for="remember" class="ml-2 block text-sm text-gray-300">Remember me</label>
+            </div>
+            <button type="submit" 
+                class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-lg hover:from-purple-700 hover:to-indigo-700">
+                Sign in
+            </button>
+        </form>
+        <div class="mt-8 text-center">
+            <p class="text-gray-400">
+                Don't have an account? 
+                <a href="/auth/register" class="text-purple-400 hover:text-purple-300 transition font-medium">Sign up</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(31, 41, 55, 0.95));
+    }
+    
+    .auth-box {
+        background: rgba(31, 41, 55, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 2.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 420px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group input {
+        transition: all 0.2s ease;
+    }
+    
+    .form-group input:focus {
+        box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2);
+    }
+
+    button[type="submit"] {
+        background-image: linear-gradient(to right, #9333ea, #4f46e5);
+        transition: all 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-image: linear-gradient(to right, #7e22ce, #4338ca);
+        transform: translateY(-1px);
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(formData)
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('token', data.access_token);
+                window.location.href = '/dashboard';
+            } else {
+                const error = await response.json();
+                alert(error.detail || 'Login failed. Please check your credentials.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred during login.');
+        }
+    });
+</script>
+{% endblock %} 

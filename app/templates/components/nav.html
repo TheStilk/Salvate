@@ -1,0 +1,33 @@
+<nav>
+    <div class="container">
+        <a href="/" class="logo">Salvate</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/auth/login" id="loginLink">Login</a>
+            <a href="/auth/register" id="registerLink">Register</a>
+            <a href="#" id="logoutLink" style="display: none;">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Check if user is logged in
+    const token = localStorage.getItem('token');
+    const loginLink = document.getElementById('loginLink');
+    const registerLink = document.getElementById('registerLink');
+    const logoutLink = document.getElementById('logoutLink');
+    
+    if (token) {
+        loginLink.style.display = 'none';
+        registerLink.style.display = 'none';
+        logoutLink.style.display = 'inline';
+    }
+    
+    // Handle logout
+    logoutLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('token');
+        window.location.href = '/auth/login';
+    });
+</script> 

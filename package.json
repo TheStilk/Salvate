@@ -1,0 +1,19 @@
+{
+  "name": "salvate",
+  "version": "0.1.0",
+  "description": "A subscription management system",
+  "private": true,
+  "scripts": {
+    "dev": "uvicorn app.main:app --reload",
+    "test": "pytest",
+    "lint": "flake8 app tests",
+    "format": "black app tests"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1",
+    "eslint": "^8.0.0"
+  }
+} 

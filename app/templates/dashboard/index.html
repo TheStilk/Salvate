@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Salvate{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-white mb-8">Dashboard</h1>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3 class="text-gray-400">Total Users</h3>
+                <p id="totalUsers" class="text-purple-500">Loading...</p>
+            </div>
+            <div class="stat-card">
+                <h3 class="text-gray-400">Active Subscriptions</h3>
+                <p id="activeSubscriptions" class="text-purple-500">Loading...</p>
+            </div>
+            <div class="stat-card">
+                <h3 class="text-gray-400">Total Revenue</h3>
+                <p id="totalRevenue" class="text-purple-500">Loading...</p>
+            </div>
+        </div>
+
+        <div class="recent-activity mt-12">
+            <h2 class="text-2xl font-bold text-white mb-6">Recent Activity</h2>
+            <div class="activity-grid">
+                <div class="activity-section">
+                    <h3 class="text-gray-400 mb-4">Recent Subscriptions</h3>
+                    <div id="recentSubscriptions" class="space-y-4">
+                        <div class="animate-pulse">
+                            <div class="h-4 bg-gray-700 rounded w-3/4"></div>
+                            <div class="h-4 bg-gray-700 rounded w-1/2 mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-section">
+                    <h3 class="text-gray-400 mb-4">Recent Users</h3>
+                    <div id="recentUsers" class="space-y-4">
+                        <div class="animate-pulse">
+                            <div class="h-4 bg-gray-700 rounded w-3/4"></div>
+                            <div class="h-4 bg-gray-700 rounded w-1/2 mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .dashboard {
+        padding: 2rem 0;
+        margin-top: 4rem;
+        background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.9));
+        min-height: calc(100vh - 4rem);
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .stat-card {
+        background: rgba(31, 41, 55, 0.7);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stat-card h3 {
+        margin-bottom: 0.5rem;
+        color: #9ca3af;
+    }
+    
+    .stat-card p {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #a855f7;
+    }
+    
+    .activity-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .activity-section {
+        background: rgba(31, 41, 55, 0.7);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .activity-section h3 {
+        margin-bottom: 1rem;
+        color: #9ca3af;
+    }
+    
+    .activity-item {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+    }
+    
+    .activity-item:last-child {
+        border-bottom: none;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Check if user is logged in
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = '/auth/login';
+    }
+    
+    // Fetch dashboard stats
+    async function fetchStats() {
+        try {
+            const response = await fetch('/api/dashboard/stats', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById('totalUsers').textContent = data.total_users;
+                document.getElementById('activeSubscriptions').textContent = data.active_subscriptions;
+                document.getElementById('totalRevenue').textContent = `$${data.revenue.toFixed(2)}`;
+            } else {
+                throw new Error('Failed to fetch stats');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    
+    // Fetch recent activity
+    async function fetchActivity() {
+        try {
+            const response = await fetch('/api/dashboard/recent-activity', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                
+                // Display recent subscriptions
+                const subscriptionsHtml = data.recent_subscriptions.map(sub => `
+                    <div class="activity-item">
+                        <p class="text-white font-medium">${sub.id}</p>
+                        <p class="text-gray-400">Status: ${sub.status}</p>
+                        <p class="text-purple-400">Price: $${sub.price}</p>
+                    </div>
+                `).join('');
+                document.getElementById('recentSubscriptions').innerHTML = subscriptionsHtml || '<p class="text-gray-400">No recent subscriptions</p>';
+                
+                // Display recent users
+                const usersHtml = data.recent_users.map(user => `
+                    <div class="activity-item">
+                        <p class="text-white font-medium">${user.email}</p>
+                        <p class="text-gray-400">${user.full_name || user.username}</p>
+                    </div>
+                `).join('');
+                document.getElementById('recentUsers').innerHTML = usersHtml || '<p class="text-gray-400">No recent users</p>';
+            } else {
+                throw new Error('Failed to fetch activity');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    
+    // Initial fetch
+    fetchStats();
+    fetchActivity();
+    
+    // Refresh data every 30 seconds
+    setInterval(() => {
+        fetchStats();
+        fetchActivity();
+    }, 30000);
+</script>
+{% endblock %} 

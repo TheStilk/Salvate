@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "salvate"
+version = "0.1.0"
+description = "A subscription management system"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "GPL v3.0"
+authors = [
+    { name = "Serkebayev Madiyar", email = "serkebaevmadiyar09@gmail.com" }
+]
+dependencies = [
+    "fastapi>=0.68.0",
+    "uvicorn>=0.15.0",
+    "motor>=2.5.1",
+    "pydantic>=1.8.2",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.5",
+    "email-validator>=1.1.3",
+    "pytest>=6.2.5",
+    "httpx>=0.23.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.2.5",
+    "pytest-asyncio>=0.15.1",
+    "black>=21.7b0",
+    "isort>=5.9.3",
+    "flake8>=3.9.2"
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"] 

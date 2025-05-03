@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Salvate{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-[#111827] min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(0,0,0,0.7)] backdrop-blur-md text-white py-3 px-4 md:px-8 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-8">
+                <a href="/" class="text-2xl font-bold">
+                    <span class="text-purple-500">Salvate</span><span class="text-purple-300">Super</span>
+                </a>
+
+                <ul class="hidden md:flex items-center space-x-6">
+                    <li class="relative dropdown">
+                        <a href="#" class="text-gray-200 hover:text-white transition duration-200 flex items-center py-2">
+                            Functionality <span class="arrow-down"></span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="/dashboard">Dashboard</a>
+                            <a href="/subscriptions">Subscriptions</a>
+                            <a href="/analytics">Analytics</a>
+                        </div>
+                    </li>
+                    <li><a href="/chat" class="text-gray-200 hover:text-white transition duration-200 py-2">Chat with AI</a></li>
+                    <li class="relative dropdown">
+                        <a href="#" class="text-gray-200 hover:text-white transition duration-200 flex items-center py-2">
+                            Investments <span class="arrow-down"></span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="/investments/stocks">Stocks</a>
+                            <a href="/investments/bonds">Bonds</a>
+                            <a href="/investments/crypto">Crypto</a>
+                        </div>
+                    </li>
+                    <li><a href="/blog" class="text-gray-200 hover:text-white transition duration-200 py-2">Blog</a></li>
+                    <li><a href="/changes" class="text-gray-200 hover:text-white transition duration-200 py-2">Changes</a></li>
+                </ul>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="/auth/login" class="bg-gray-700/50 hover:bg-gray-600/60 border border-gray-600/80 text-white font-semibold py-2 px-5 rounded-lg transition duration-200">
+                    Log In
+                </a>
+                <a href="/auth/register" class="bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-2 px-5 rounded-lg transition duration-200 shadow-md">
+                    Start
+                </a>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden mt-2 border-t border-gray-700/50">
+            <ul class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <li class="relative dropdown-mobile">
+                    <button class="mobile-dropdown-toggle text-gray-200 hover:text-white transition duration-200 flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700/50">
+                        Functionality
+                        <span class="arrow-down transform rotate-0 transition-transform duration-200"></span>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 mt-1 space-y-1 py-1">
+                        <a href="/dashboard" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-600/50">Dashboard</a>
+                        <a href="/subscriptions" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-600/50">Subscriptions</a>
+                        <a href="/analytics" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-600/50">Analytics</a>
+                    </div>
+                </li>
+                <li><a href="/chat" class="text-gray-200 hover:bg-gray-700/50 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Chat with AI</a></li>
+                <li class="relative dropdown-mobile">
+                    <button class="mobile-dropdown-toggle text-gray-200 hover:text-white transition duration-200 flex items-center justify-between w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700/50">
+                        Investments
+                        <span class="arrow-down transform rotate-0 transition-transform duration-200"></span>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 mt-1 space-y-1 py-1">
+                        <a href="/investments/stocks" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-600/50">Stocks</a>
+                        <a href="/investments/bonds" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-600/50">Bonds</a>
+                        <a href="/investments/crypto" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-600/50">Crypto</a>
+                    </div>
+                </li>
+                <li><a href="/blog" class="text-gray-200 hover:bg-gray-700/50 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Blog</a></li>
+                <li><a href="/changes" class="text-gray-200 hover:bg-gray-700/50 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Changes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Salvate</h3>
+                    <p class="text-sm">Your subscription management solution for modern businesses.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="/pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="/integrations" class="hover:text-white transition">Integrations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="hover:text-white transition">About</a></li>
+                        <li><a href="/blog" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="/careers" class="hover:text-white transition">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/privacy" class="hover:text-white transition">Privacy</a></li>
+                        <li><a href="/terms" class="hover:text-white transition">Terms</a></li>
+                        <li><a href="/security" class="hover:text-white transition">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+                <p>&copy; 2024 Salvate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+        // Toggle mobile menu visibility
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toggle mobile dropdown visibility
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                // Close other open dropdowns first
+                dropdownToggles.forEach(otherToggle => {
+                    if (otherToggle !== toggle) {
+                        otherToggle.nextElementSibling.classList.add('hidden');
+                        otherToggle.querySelector('.arrow-down').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle the clicked dropdown
+                const content = toggle.nextElementSibling;
+                const arrow = toggle.querySelector('.arrow-down');
+                content.classList.toggle('hidden');
+                arrow.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+</body>
+</html> 
