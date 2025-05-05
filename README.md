@@ -1,15 +1,3 @@
-# Salvate
-
-A modern subscription management system built with FastAPI and MongoDB.
-
-## Features
-
-- User authentication and authorization
-- Subscription management
-- Dashboard with analytics
-- RESTful API
-- Modern web interface
-
 ## Requirements
 
 - Python 3.12.10
@@ -20,19 +8,25 @@ A modern subscription management system built with FastAPI and MongoDB.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/thestilk/salvate.git
-cd salvate
+git clone https://github.com/TheStilk/Salvate.git
+cd Salvate
 ```
 
 2. Create and activate a virtual environment:
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# On Linux
+source venv/bin/activate 
+source venv/bin/activate.fish	# shell fish
+
+# On Windows: 
+venv\Scripts\activate
 ```
 
 3. Install dependencies:
 ```bash
-pip install -e .
+pip install -r requirements.txt
 ```
 
 4. Create a `.env` file with your configuration:
@@ -65,11 +59,3 @@ Run the test suite:
 ```bash
 pytest
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
