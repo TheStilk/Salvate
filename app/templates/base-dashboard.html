@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvate - Финансовый трекер</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/css/dashboard-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <a class="logo logo-text" href="/">
+                <img src="/static/images/logo.png" alt="Salvate Logo" width="35" height="35"> Salvate
+            </a>
+        </div>
+        <div class="menu-item active">
+            <div class="menu-icon">
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+            <div>Кошелёк</div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div>Статистика</div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+            <div>Ассистент</div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <div>Цели</div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fa-solid fa-book"></i>
+            </div>
+            <div>Учёба</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="theme-toggle">
+            <div class="menu-icon">
+                <i class="fa-solid fa-moon"></i>
+            </div>
+            <div>Сменить тему</div>
+            <label class="toggle-switch">
+                <input type="checkbox" id="themeToggleInput"> <span class="toggle-slider"></span>
+            </label>
+        </div>
+
+        <div class="user-profile">
+            <div class="user-avatar">A</div>
+            <div class="user-info">
+                <div>Serkebayev</div>
+                <div class="user-level">
+                    Level 10
+                    <div class="level-bar">
+                        <div class="level-progress"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content_dashboard %} {% endblock %}
+        
+    {% block css_dashboard %} {% endblock %}
+
+    {% block js_dashboard %}
+        <script src="/static/js/dashboard-script.js"></script>
+    {% endblock %}
+
+</body>
+</html>

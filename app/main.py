@@ -46,4 +46,4 @@ async def register_page(request: Request):
 
 @app.get("/dashboard")
 async def dashboard_page(request: Request):
-    return templates.TemplateResponse("dashboard/index.html", {"request": request}) 
+    return templates.TemplateResponse("dashboard/index.html", {"request": request})

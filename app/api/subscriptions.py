@@ -42,4 +42,4 @@ async def delete_subscription(
     current_user: User = Depends(get_current_user)
 ):
     # TODO: Implement subscription deletion
-    pass 
+    pass

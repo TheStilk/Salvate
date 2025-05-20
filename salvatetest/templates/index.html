@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ current_locale }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ _("app_title") }}</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        nav a { margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <h1>{{ _("greeting") }}</h1>
+    <p>{{ _("welcome_message") }}</p>
+    <p>{{ _("current_language_is", lang=current_locale_display_name) }}</p>
+
+    <hr>
+    <nav>
+        <span>{{ _("change_language_prompt") }}</span>
+        <a href="/set-lang/en">{{ _("language_english") }}</a>
+        <a href="/set-lang/ru">{{ _("language_russian") }}</a>
+    </nav>
+</body>
+</html>

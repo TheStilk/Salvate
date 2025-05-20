@@ -12,4 +12,4 @@ async def get_database():
 
 async def close_db():
     if client:
-        client.close() 
+        client.close()

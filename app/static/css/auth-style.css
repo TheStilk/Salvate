@@ -1,0 +1,446 @@
+/* static/css/auth_style.css */
+
+:root {
+    --font-family-main: 'Inter', sans-serif;
+
+    /* Унифицированные цвета для страниц авторизации/регистрации */
+    --color-bg-page: #121212; /* Обновлено с --bg-dark */
+    --color-text-primary: #E0E0E0;
+    --color-text-secondary: #B0B0D0; /* Для подзаголовков и менее важного текста на auth */
+    --color-text-tertiary: #8A8A9E;  /* Для текста "OR", футера */
+    --color-text-light: #FFFFFF;
+    --color-text-dark: #333333;     /* Для текста на кнопке Google */
+    --color-text-placeholder: #9088AA; /* Новый цвет для плейсхолдеров */
+
+    --color-bg-container: #2C1F48;
+    --color-bg-illustration: #3A2D5C;
+    --color-bg-input: #3B2D5A;
+    --color-bg-button-google: #FFFFFF;
+    --color-bg-button-google-hover: #F7F7F7;
+
+    --color-accent-primary: #7E3AF2; /* Основной акцентный цвет для auth */
+    --color-accent-primary-hover: #6A2FDE;
+    --color-accent-secondary: #A78BFA; /* Для ссылок на auth */
+
+    --color-border-input: #504072;
+    --color-border-input-focus: var(--color-accent-primary);
+    --color-border-google-btn: #DCDCDC;
+    --color-border-google-btn-hover: #C8C8C8;
+    --color-border-separator: #4A3B6C;
+
+    --color-icon-google: #000000; /* Обновлено */
+    --color-shadow-focus: rgba(126, 58, 242, 0.25);
+    --color-shadow-container: rgba(0, 0, 0, 0.5);
+
+    --color-button-back-bg: rgba(44, 31, 72, 0.8);
+    --color-button-back-bg-hover: rgba(69, 50, 110, 0.95);
+}
+
+/* Общие стили для страницы */
+body {
+    font-family: var(--font-family-main);
+    background-color: var(--color-bg-page);
+    color: var(--color-text-primary);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+}
+
+/* Обертка для центрирования основного контейнера */
+.auth-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* Кнопка "На главную" */
+.back-to-home {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    background-color: var(--color-button-back-bg);
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.back-to-home:hover {
+    background-color: var(--color-button-back-bg-hover);
+    color: var(--color-text-light);
+}
+
+.back-to-home i {
+    margin-right: 8px;
+}
+
+/* Основной контейнер для формы и иллюстрации */
+.auth-container {
+    display: flex;
+    width: 100%;
+    max-width: 960px;
+    background-color: var(--color-bg-container);
+    border-radius: 12px;
+    box-shadow: 0 10px 35px var(--color-shadow-container);
+    overflow: hidden;
+    margin-top: 0;
+}
+
+/* Блок с иллюстрацией */
+.auth-illustration {
+    flex: 1;
+    background-color: var(--color-bg-illustration);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 500px;
+}
+
+.auth-illustration img.main-illustration {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Контейнер с формой */
+.auth-form-container {
+    flex: 1;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-form-container h1 {
+    color: var(--color-text-light);
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.auth-form-container .subtitle {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+/* Кнопка "Continue with Google" */
+.google-btn {
+    background-color: var(--color-bg-button-google);
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-border-google-btn);
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.google-btn:hover {
+    background-color: var(--color-bg-button-google-hover);
+    border-color: var(--color-border-google-btn-hover);
+}
+
+.google-btn .fab.fa-google {
+    margin-right: 12px;
+    font-size: 18px;
+    color: var(--color-icon-google);
+}
+
+/* Разделитель "OR" */
+.or-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--color-text-tertiary);
+    margin: 25px 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--color-border-separator);
+}
+
+.or-separator span {
+    padding: 0 15px;
+}
+
+/* Группы полей формы */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--color-text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Стили для input полей */
+.form-group input[type="email"],
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-border-input);
+    border-radius: 8px;
+    color: var(--color-text-light);
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="email"]::placeholder,
+.form-group input[type="text"]::placeholder,
+.form-group input[type="password"]::placeholder {
+    color: var(--color-text-placeholder);
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: var(--color-border-input-focus);
+    box-shadow: 0 0 0 3px var(--color-shadow-focus);
+}
+
+/* Обертка для поля пароля (для иконки глаза) */
+.password-wrapper {
+    position: relative;
+}
+
+/* Группа "Условия соглашения" (для страницы регистрации) */
+.terms-group {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.terms-group input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--color-accent-primary);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.terms-group label {
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}
+
+.terms-group a {
+    color: var(--color-accent-secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+/* Ссылка "Забыли пароль?" (для страницы входа) */
+.label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.label-wrapper label {
+    margin-bottom: 0;
+}
+
+.forgot-password-link {
+    font-size: 13px;
+    color: var(--color-accent-secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Группа "Запомнить меня" (для страницы входа) */
+.remember-me-group {
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.remember-me-group input[type="checkbox"] {
+    margin-right: 8px;
+    width: 15px;
+    height: 15px;
+    accent-color: var(--color-accent-primary);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.remember-me-group label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+
+/* Кнопка отправки формы */
+.submit-btn {
+    background-color: var(--color-accent-primary);
+    color: var(--color-text-light);
+    border: none;
+    padding: 13px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-accent-primary-hover);
+}
+
+/* Ссылка для перехода на другую форму (Вход/Регистрация) */
+.auth-link {
+    text-align: center;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.auth-link a {
+    color: var(--color-accent-secondary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Подвал страницы */
+.page-footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin-top: auto;
+}
+
+
+/* Адаптивность */
+@media (max-width: 860px) {
+    .auth-illustration {
+        display: none;
+    }
+    .auth-form-container {
+        flex: auto;
+        border-radius: 12px;
+    }
+    .auth-container {
+        max-width: 480px;
+        flex-direction: column;
+    }
+    .back-to-home {
+        top: 15px;
+        left: 15px;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+     body {
+        padding-top: 70px;
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        padding-top: 60px;
+        padding-bottom: 50px;
+    }
+    .auth-form-container {
+        padding: 30px 25px;
+    }
+    .auth-form-container h1 {
+        font-size: 22px;
+    }
+    .auth-form-container .subtitle {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    .google-btn,
+    .submit-btn {
+        padding: 11px;
+        font-size: 15px;
+    }
+    .form-group input[type="email"],
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        padding: 11px 12px;
+        font-size: 14px;
+    }
+    .terms-group,
+    .remember-me-group label,
+    .forgot-password-link {
+        font-size: 12px;
+    }
+    .or-separator {
+        margin: 20px 0;
+    }
+    .back-to-home {
+        top: 10px;
+        left: 10px;
+    }
+    .page-footer {
+        font-size: 11px;
+    }
+}

@@ -27,4 +27,4 @@ async def update_user(
 @router.delete("/{user_id}")
 async def delete_user(user_id: str, current_user: User = Depends(get_current_user)):
     # TODO: Implement user deletion
-    pass 
+    pass

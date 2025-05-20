@@ -1,0 +1,9 @@
+{
+  "app_title": "My Multilingual App",
+  "greeting": "Hello, FastAPI User!",
+  "welcome_message": "Welcome to this simple multilingual application.",
+  "change_language_prompt": "Change language:",
+  "language_english": "English",
+  "language_russian": "Russian",
+  "current_language_is": "Current language is: %(lang)s"
+}

@@ -78,4 +78,4 @@ async function handleRegister(event) {
         console.error('Error:', error);
         alert('An error occurred during registration.');
     }
-} 
+}

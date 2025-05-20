@@ -3,293 +3,341 @@
 {% block title %}Welcome to Salvate{% endblock %}
 
 {% block content %}
-<div class="hero overlay">
-    <div class="container mx-auto px-4">
-        <h1 class="text-5xl font-bold mb-6 gradient-text">Improve your<br>money management</h1>
-        <p class="text-xl text-gray-300 mb-8">Optimize your budget, achieve your goals<br>and invest wisely with AI</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <div class="relative w-full image-container">
-                <img src="static/images/example_ui.png" alt="Salvate Dashboard Preview" class="w-full h-auto rounded-lg">
+
+<section id="features" class="hero-section">
+    <div class="container">
+        <h1>Улучшите свое управление деньгами</h1>
+        <p class="sub-headline">Оптимизируйте бюджет, достигайте целей и инвестируйте разумно с помощью ИИ</p>
+        <div class="hero-theme">
+            <div class="hero-theme-continue">
+                <img src="/static/images/example_ui.png" alt="Salvate Dashboard Preview" class="hero-theme-continue-continue">
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="features py-16">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-white text-center mb-12">Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">                    
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Help with shopping</h3>
-                <p class="text-gray-300">Help with saving up for any purchase</p>
+<!-- <section id="features" class="features-grid-section"> </section> -->
+
+<section id="efficiency" class="efficiency-section">
+    <div class="container">
+        <h2>Повысьте эффективность с помощью</h2>
+        <div class="efficiency-grid">
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-shopping-cart"></i></div>
+                <div class="text-content">
+                    <h3>Помощь с покупками</h3>
+                    <p>Помощь с накоплением средств на какую-либо покупку.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Multicurrency</h3>
-                <p class="text-gray-300">Support for multiple currencies</p>
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-lightbulb"></i></div>
+                <div class="text-content">
+                    <h3>Полезные рекомендации</h3>
+                    <p>Оптимизация вашего бюджета с помощью персональных рекомендаций по управлению доходами и расходами.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Swing like you're in a game</h3>
-                <p class="text-gray-300">Gamification of the process, to motivate users, achievement, experience, levels and challenge</p>
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-graduation-cap"></i></div>
+                <div class="text-content">
+                    <h3>Обучение</h3>
+                    <p>Повышение финансовой грамотности через приложение с использованием курсов, советов и анализа расходов.</p>
+                </div>
             </div>
-            <div class="feature-card">                    
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Useful tips</h3>
-                <p class="text-gray-300">Optimize your budget with personalized income and expense management recommendations.</p>
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-exchange-alt"></i></div>
+                <div class="text-content">
+                    <h3>Мультивалютность</h3>
+                    <p>Поддержка множества валют.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Advance AI</h3>
-                <p class="text-gray-300">Chat with the AI to discuss finances</p>
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-brain"></i></div>
+                <div class="text-content">
+                    <h3>Продвинутый ИИ</h3>
+                    <p>Чат с ИИ для обсуждения финансов.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Useful integrations</h3>
-                <p class="text-gray-300">Integration with financial APIs, currency rates and stock prices, to synchronize data with banks you can arrange with them to integrate the app to import data on money spent.</p>
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-wand-magic-sparkles"></i></div>
+                <div class="text-content">
+                    <h3>Удобный UI</h3>
+                    <p>Анимации и плавные переходы для приятного пользовательского опыта.</p>
+                </div>
             </div>
-            <div class="feature-card">                    
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Learning</h3>
-                <p class="text-gray-300">Increase financial literacy through the app using courses, tips, and spending analysis.</p>
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-gamepad"></i></div>
+                <div class="text-content">
+                    <h3>Покачивайся как в игре</h3>
+                    <p>Геймификация процесса, для мотивации пользователей, достижение, опыт, уровни и челенджи.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Easy UI</h3>
-                <p class="text-gray-300">Animations and smooth transitions for a pleasant user experience.</p>
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-link"></i></div>
+                <div class="text-content">
+                    <h3>Полезные интеграции</h3>
+                    <p>Интеграция с финансовыми API, курсы валют и цены акций, для синхронизации данных.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3 class="text-xl font-semibold text-purple-400 mb-4">Investments</h3>
-                <p class="text-gray-300">Investment assistance to create and analyze investment portfolios.</p>
+            <div class="efficiency-item">
+                <div class="icon-container"><i class="fas fa-chart-line"></i></div>
+                <div class="text-content">
+                    <h3>Competitor reports</h3>
+                    <p>Помощь с инвестициями для создания и анализа инвестиционных портфелей.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="pricing py-16">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-white text-center mb-4">Choose Your Plan</h2>
-        <p class="text-gray-400 text-center mb-12">Flexible options for every need</p>
+<section id="pricing" class="pricing-section">
+    <div class="container">
+        <h2>Прайс</h2>
+        <p class="section-subtitle">Выбери удобный для тебя план</p>
         
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <div class="justify-content">
-                    <div class="pricing-header">
-                        <h3 class="text-2xl font-bold text-purple-400">Free</h3>
-                        <div class="price">
-                            <span class="text-4xl font-bold text-white">$0</span>
-                            <span class="text-gray-400">/forever</span>
+        <div class="pricing-plans">
+            <div class="pricing-plan free-plan">
+                <h3>Free</h3>
+                <div class="price-tag">
+                    <span class="amount">$0</span><span class="period">/forever</span>
+                </div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Track up to 5 subscriptions</li>
+                    <li><i class="fas fa-check"></i> Basic analytics</li>
+                    <li><i class="fas fa-check"></i> Email notifications</li>
+                    <li><i class="fas fa-check"></i> Community support</li>
+                </ul>
+                <button class="btn-price">Get Started</button>
+            </div>
+
+            <div class="pricing-plan pro-plan">
+                <div class="most-popular-badge">Most Popular</div>
+                <h3>Pro</h3>
+                <div class="price-tag">
+                    <span class="amount" data-monthly-price="$4.99" data-yearly-price="$49.99">$4.99</span><span class="period" data-monthly-period="/month" data-yearly-period="/year">/month</span>
+                </div>
+                <div class="billing-toggle">
+                    <button class="toggle-option active" data-period="monthly">Monthly</button>
+                    <button class="toggle-option" data-period="yearly">Yearly</button>
+                </div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Unlimited subscriptions</li>
+                    <li><i class="fas fa-check"></i> Advanced analytics</li>
+                    <li><i class="fas fa-check"></i> Custom notifications</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Export data</li>
+                </ul>
+                <button class="btn-price">Subscribe Now</button>
+            </div>
+
+            <div class="pricing-plan business-plan">
+                    <h3>Business</h3>
+                <div class="price-tag">
+                        <span class="amount" data-monthly-price="$9.99" data-yearly-price="$99.99">$9.99</span><span class="period" data-monthly-period="/month" data-yearly-period="/year">/month</span>
+                </div>
+                <div class="billing-toggle">
+                    <button class="toggle-option active" data-period="monthly">Monthly</button>
+                    <button class="toggle-option" data-period="yearly">Yearly</button>
+                </div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Everything in Pro</li>
+                    <li><i class="fas fa-check"></i> Team collaboration</li>
+                    <li><i class="fas fa-check"></i> Custom branding</li>
+                    <li><i class="fas fa-check"></i> Advanced reporting</li>
+                    <li><i class="fas fa-check"></i> Dedicated support</li>
+                    <li><i class="fas fa-check"></i> SSO integration</li>
+                </ul>
+                <button class="btn-price">Contact Sales</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="blog" class="testimonials-section">
+    <div class="container">
+        <h2>Что говорят наши пользователи</h2>
+        <p class="section-subtitle">Узнайте, почему более 5 пользователей доверяют нам управление своими финансами.</p>
+
+        <div class="testimonial-slider-container">
+            <button class="scroll-arrow prev-arrow" aria-label="Предыдущий отзыв"><i class="fas fa-chevron-left"></i></button>
+            <div class="testimonial-scroll-wrapper">
+                <div class="testimonials-grid">
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-author">
+                                <h4>Винс</h4>
+                                <p>Дизайнер</p>
+                            </div>
+                        </div>
+                        <blockquote class="testimonial-body">
+                            "Salvate имеет чистый, красивый и современный дизайн. Среди множества подобных сервисов — это тот самый выбор, который нельзя упустить. Доверьтесь мне!!!"
+                        </blockquote>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <ul class="features-list">
-                        <li>Track up to 5 subscriptions</li>
-                        <li>Basic analytics</li>
-                        <li>Email notifications</li>
-                        <li>Community support</li>
-                    </ul>
-                    <div>
-                        <button class="btn-outline w-full mt-6 p-2 rounded-md">Get Started</button>
-                    </div>
-                </div>
-            </div>
 
-            <div class="pricing-card featured">
-                <div class="pricing-badge">Most Popular</div>
-                <div class="pricing-header">
-                    <h3 class="text-2xl font-bold text-purple-400">Pro</h3>
-                    <div class="price">
-                        <span class="text-4xl font-bold text-white">$4.99</span>
-                        <span class="text-gray-400">/month</span>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-author">
+                                <h4>Yuyu</h4>
+                                <p>Ведущий разработчик</p>
+                            </div>
+                        </div>
+                        <blockquote class="testimonial-body">
+                            "Этот сервис вдохнул новую жизнь в мои финансы! Удивительно, но управлять бюджетом стало намного проще и интуитивнее, чем с другими программами. Все функции работают отлично!"
+                        </blockquote>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
                     </div>
-                    <div class="billing-options">
-                        <button class="active">Monthly</button>
-                        <button>Yearly</button>
-                    </div>
-                </div>
-                <ul class="features-list">
-                    <li>Unlimited subscriptions</li>
-                    <li>Advanced analytics</li>
-                    <li>Custom notifications</li>
-                    <li>Priority support</li>
-                    <li>Export data</li>
-                </ul>
-                <button class="btn-primary w-full mt-6 p-2 rounded-md">Subscribe Now</button>
-            </div>
 
-            <div class="pricing-card">
-                <div class="pricing-header">
-                    <h3 class="text-2xl font-bold text-purple-400">Business</h3>
-                    <div class="price">
-                        <span class="text-4xl font-bold text-white">$9.99</span>
-                        <span class="text-gray-400">/month</span>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-author">
+                                <h4>Aimer</h4>
+                                <p>Разработчик</p>
+                            </div>
+                        </div>
+                        <blockquote class="testimonial-body">
+                            "Salvate - это идеальный инструмент для разработчиков и фрилансеров! Он легкий, но мощный. С его продуманными отчетами и аналитикой легко следить за проектами и доходами."
+                        </blockquote>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                     </div>
-                    <div class="billing-options">
-                        <button class="active">Monthly</button>
-                        <button>Yearly</button>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-author">
+                                <h4>Сергей</h4>
+                                <p>Предприниматель</p>
+                            </div>
+                        </div>
+                        <blockquote class="testimonial-body">
+                            "Наконец-то я нашел сервис, который помогает мне не только отслеживать расходы, но и планировать бюджет наперед. Функция прогнозирования – просто супер! Экономит кучу времени."
+                        </blockquote>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-author">
+                                <h4>Елена</h4>
+                                <p>Финансовый консультант</p>
+                            </div>
+                        </div>
+                        <blockquote class="testimonial-body">
+                            "Рекомендую Salvate своим клиентам. Интеграции с банками и возможность создавать цели по накоплениям делают его незаменимым помощником для достижения финансовой стабильности."
+                        </blockquote>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-author">
+                            <h4>Винс</h4>
+                            <p>Дизайнер</p>
+                        </div>
+                    </div>
+                    <blockquote class="testimonial-body">
+                        Salvate имеет чистый, красивый и современный дизайн, удобный интерфейс. Среди множества приложений по управлению финансами — это то самое, которое нельзя упустить. Доверьтесь мне!!!
+                    </blockquote>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                 </div>
-                <ul class="features-list">
-                    <li>Everything in Pro</li>
-                    <li>Team collaboration</li>
-                    <li>Custom branding</li>
-                    <li>Advanced reporting</li>
-                    <li>Dedicated support</li>
-                    <li>SSO integration</li>
-                </ul>
-                <button class="btn-primary w-full mt-6 p-2 rounded-md">Contact Sales</button>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-author">
+                            <h4>Yuyuyuyu</h4>
+                            <p>Среднестатестический пользатель</p>
+                        </div>
+                    </div>
+                    <blockquote class="testimonial-body">
+                        Salvate вдохнул новую жизнь, раньше я считал бесполезным считать сколько я трачу. Удивительно, но приложение мне помогло накопить деньги на вещи которые я себе давно не мог позволить, советую!
+                    </blockquote>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <!-- <img src="placeholder-avatar-3.jpg" alt="A" class="testimonial-avatar"> -->
+                        <div class="testimonial-author">
+                            <h4>Aimer</h4>
+                            <p>Разработчик</p>
+                        </div>
+                    </div>
+                    <blockquote class="testimonial-body">
+                        Salvate - это как ваш финальный дистрибутив Linux с которого не хочеться уходить! Он ориентирован на любых пользателей и при этом быстро работает с мощным функционалом.
+                    </blockquote>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
             </div>
+            </div>
+            <button class="scroll-arrow next-arrow" aria-label="Следующий отзыв"><i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
-</div>
+</section>
+
+<section id="contact-cta" class="footer-cta-section">
+    <div class="container">
+        <h2>Salvate - Для всех</h2>
+        <form class="cta-form">
+            <input type="email" placeholder="Ваша почта" required>
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </form>
+        <p class="cta-note">Без карты ⋅ 30-дневный бесплатный период</p>
+    </div>
+</section>
+
 {% endblock %}
 
-{% block extra_css %}
-<style>
-    .hero {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 2s ease-out forwards;
-        background: linear-gradient(135deg, rgba(2, 1, 3, 1), rgba(70, 35, 105, 1));
-        color: white;
-        padding: 8rem 0;
-        text-align: center;
-        margin-top: 4rem;
-    }
-    @keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    }
-    
-    .features {
-        background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.9));
-    }
-    
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-    
-    .feature-card {
-        background: rgba(31, 41, 55, 0.7);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        padding: 2rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        transition: transform 0.2s ease;
-    }
-    
-    .feature-card:hover {
-        transform: translateY(-5px);
-    }
+{% block css %}
 
-    .pricing {
-        background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.9));
-    }
+{% endblock %}
 
-    .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .pricing-card {
-        background: rgba(31, 41, 55, 0.7);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        padding: 2rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        transition: transform 0.2s ease;
-        position: relative;
-    }
-
-    .pricing-card.featured {
-        border: 1px solid rgba(147, 51, 234, 0.3);
-        background: linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(31, 41, 55, 0.7));
-    }
-
-    .pricing-badge {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: linear-gradient(135deg, #9333ea, #4f46e5);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-    }
-
-    .pricing-header {
-        margin-bottom: 2rem;
-    }
-
-    .price {
-        margin: 1rem 0;
-    }
-
-    .billing-options {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
-    }
-
-    .billing-options button {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 0.25rem 0.75rem;
-        border-radius: 0.5rem;
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.875rem;
-        transition: all 0.2s ease;
-    }
-
-    .billing-options button.active {
-        background: linear-gradient(135deg, #9333ea, #4f46e5);
-        color: white;
-        border-color: transparent;
-    }
-
-    .features-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 2rem 0;
-        text-align: left;
-    }
-
-    .features-list li {
-        color: rgba(255, 255, 255, 0.7);
-        padding: 0.5rem 0;
-        display: flex;
-        align-items: center;
-    }
-
-    .features-list li::before {
-        content: '✓';
-        color: #9333ea;
-        margin-right: 0.75rem;
-        font-weight: bold;
-    }
-
-    .pricing-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-    
-    @media (max-width: 768px) {
-        .hero {
-            padding: 6rem 1rem;
+{% block js %}
+    <script src="static/js/welcome.js" defer></script>
+    <script>
+        // Check if user is logged in
+        const token = localStorage.getItem('token');
+        const loginLink = document.getElementById('loginLink');
+        const registerLink = document.getElementById('registerLink');
+        const logoutLink = document.getElementById('logoutLink');
+        
+        if (token) {
+            loginLink.style.display = 'none';
+            registerLink.style.display = 'none';
+            logoutLink.style.display = 'inline';
         }
         
-        .features-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .pricing-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
-{% endblock %} 
+        // Handle logout
+        logoutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            window.location.href = '/auth/login';
+        });
+    </script>
+{% endblock %}

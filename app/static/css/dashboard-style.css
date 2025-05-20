@@ -1,0 +1,977 @@
+:root {
+    /* Темная тема */
+    --bg-dark: #121212;
+    --bg-card: #1e1e1e;
+    --text-light: #ffffff;
+    --text-secondary: #8a8a8a;
+    --primary-purple: #9b51e0;
+    --light-purple: #bc8cec;
+    --income-purple: #684484;
+    --expense-purple: #bc8cec;
+    --green: #4caf50;
+    --red: #f44336;
+    --sidebar-width: 250px;
+    --sidebar-width-collapsed: 0px;
+    --positive-bg: rgba(76, 175, 80, 0.1);
+    --negative-bg: rgba(244, 67, 54, 0.1);
+    --border-color: #2a2a2a;
+    --menu-hover: rgba(255, 255, 255, 0.05);
+    --menu-active: rgba(155, 81, 224, 0.1);
+    --profile-bg: rgba(255, 255, 255, 0.05);
+    --progress-bg: rgba(255, 255, 255, 0.1);
+    --savings-bg: rgba(255, 255, 255, 0.05);
+    --activity-border: rgba(255, 255, 255, 0.05);
+    --header-height: 60px;
+    --primary-purple-hover: #8945cb;
+    --light-purple-hover: #a978d9;
+    --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --card-hover-shadow-light: 0 8px 16px rgba(0, 0, 0, 0.08);
+    --btn-hover-brightness: 0.9;
+}
+
+/* Светлая тема */
+body.light-theme {
+    --bg-dark: #f5f5f5;
+    --bg-card: #ffffff;
+    --text-light: #333333;
+    --text-secondary: #757575;
+    --primary-purple: #9b51e0;
+    --light-purple: #bc8cec;
+    --income-purple: #684484;
+    --expense-purple: #bc8cec;
+    --green: #4caf50;
+    --red: #f44336;
+    --border-color: #e0e0e0;
+    --menu-hover: rgba(155, 81, 224, 0.05);
+    --menu-active: rgba(155, 81, 224, 0.1);
+    --profile-bg: rgba(155, 81, 224, 0.05);
+    --progress-bg: rgba(155, 81, 224, 0.1);
+    --savings-bg: rgba(155, 81, 224, 0.05);
+    --activity-border: rgba(155, 81, 224, 0.1);
+    --primary-purple-hover: #8945cb;
+    --light-purple-hover: #a978d9;
+    --card-hover-shadow: var(--card-hover-shadow-light); /* Используем уже определенную тень для светлой темы */
+    --btn-hover-brightness: 1.1; /* Для светлой темы кнопки могут становиться чуть ярче */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1001;
+    background-color: var(--primary-purple);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--light-purple);
+    transform: scale(1.1); /* Немного увеличим кнопку */
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-dark);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 0;
+    padding: 20px;
+    overflow: hidden;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    max-width: 35px;
+    height: auto;
+}
+
+.logo:hover img {
+    transform: rotate(-5deg) scale(1.05); /* Легкий наклон и увеличение для лого */
+}
+
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.logo:hover .logo-text {
+    color: var(--light-purple); /* Изменение цвета текста логотипа при наведении на всю область */
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease, border-left-color 0.2s ease, transform 0.2s ease; /* Добавим border-left-color и transform */
+    position: relative; /* Для псевдоэлементов, если понадобятся */
+}
+
+.menu-item.active {
+    background-color: var(--menu-active);
+    color: var(--primary-purple);
+    border-left: 3px solid var(--light-purple);
+    border-top-left-radius: 10px; /* Округление верхнего левого угла */
+    border-bottom-left-radius: 10px; /* Округление нижнего левого угла */
+    box-shadow: 0 0 10px rgba(var(--primary-purple-rgb, 155, 81, 224), 0.1);
+}
+
+.menu-item:hover:not(.active) {
+    background-color: var(--menu-hover);
+    color: var(--light-purple); /* Делаем текст ярче при наведении */
+    transform: translateX(5px); /* Небольшой сдвиг вправо */
+}
+
+.menu-item:hover:not(.active) .menu-icon {
+    transform: scale(1.1); /* Увеличиваем иконку при наведении */
+}
+
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.menu-item .menu-icon {
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--menu-hover);
+    transform: translateX(3px); /* Небольшой сдвиг */
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--text-secondary);
+    border-radius: 24px;
+    transition: background-color .4s ease, box-shadow 0.3s ease; /* Добавим box-shadow */
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform .4s ease, box-shadow 0.3s ease; /* Добавим box-shadow */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .toggle-slider {
+    background-color: var(--primary-purple);
+    box-shadow: 0 0 5px var(--primary-purple); /* Свечение при активации */
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(20px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.separator {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 10px 0;
+}
+
+.user-profile {
+    margin-top: auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background-color: var(--profile-bg);
+    white-space: nowrap;
+}
+
+.user-profile:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Тень при наведении */
+    transform: translateY(-2px); /* Небольшой подъем */
+    background-color: rgba(255, 255, 255, 0.08); /* Чуть светлее фон */
+}
+
+
+
+body.light-theme .user-profile:hover {
+    background-color: rgba(155, 81, 224, 0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-purple);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px var(--primary-purple);
+}
+
+.user-info {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-level {
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.level-bar {
+    height: 4px;
+    width: 80px;
+    background-color: var(--progress-bg);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.level-progress {
+    height: 100%;
+    width: 40%;
+    background-color: var(--primary-purple);
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    padding-left: calc(var(--sidebar-width) + 20px);
+    transition: padding-left 0.3s ease-in-out;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header-title {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Добавим box-shadow */
+    position: relative; /* Для возможных псевдоэлементов или эффектов */
+    overflow: hidden; /* Для некоторых эффектов заливки */
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* Поднимаем кнопку */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-income {
+    background-color: var(--primary-purple);
+    color: white;
+}
+
+.btn-income:hover {
+    background-color: var(--primary-purple-hover); /* Используем новую переменную */
+    filter: brightness(110%); /* Или просто делаем ярче */
+}
+
+.btn-expense:hover {
+    background-color: rgba(var(--primary-purple-rgb, 155, 81, 224), 0.15); /* Чуть более интенсивный фон */
+    color: var(--primary-purple-hover);
+    border-color: var(--primary-purple-hover);
+}
+
+.btn-expense {
+    background-color: var(--menu-active);
+    color: var(--primary-purple);
+    border: 1px solid var(--primary-purple);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-icon {
+    margin-right: 5px;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+
+.balance-card {
+    position: relative;
+}
+
+.half-card .card-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.card-label {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.balance-card .card-label {
+    margin-bottom: 10px;
+}
+
+.balance-amount {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.balance-card .percent-change {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.half-card .percent-change {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.percent-change.positive {
+    color: var(--green);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.percent-change.negative {
+    color: var(--red);
+}
+
+.arrow-up {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin-right: 5px;
+}
+
+.arrow-down {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin-right: 5px;
+}
+
+.balance-card:hover .percent-change,
+.half-card:hover .percent-change {
+    transform: scale(1.05);
+}
+
+.cashflow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.time-filters {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.time-filter {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease, transform 0.2s ease; /* all уже включает нужные свойства */
+}
+
+.time-filter.active {
+    background-color: var(--primary-purple);
+    color: white;
+    border-color: var(--primary-purple);
+    box-shadow: 0 2px 5px rgba(var(--primary-purple-rgb, 155, 81, 224), 0.3);
+    transform: scale(1.02); /* Чуть больше активный элемент */
+}
+
+body.light-theme .time-filter {
+    border: 1px solid var(--border-color);
+}
+
+body.light-theme .time-filter.active {
+    border-color: var(--primary-purple);
+}
+
+.time-filter:hover:not(.active) {
+    background-color: var(--menu-hover); /* Как у пунктов меню */
+    color: var(--light-purple);
+    border-color: var(--light-purple);
+    transform: translateY(-2px) scale(1.03); /* Подъем и увеличение */
+}
+
+.chart-container {
+    height: 200px;
+    position: relative;
+    min-height: 180px;
+}
+
+.cards-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.half-card {
+    flex: 1 1 100%;
+    min-width: 280px;
+}
+
+.goal-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+.goal-item:hover {
+    background-color: rgba(255, 255, 255, 0.03); /* Легкое выделение */
+}
+
+.goal-progress {
+    height: 8px;
+    background-color: var(--progress-bg);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.goal-bar {
+    height: 100%;
+    background-color: var(--primary-purple);
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out; /* Для плавной анимации заполнения */
+}
+
+.savings-total {
+    margin-top: 20px;
+    background-color: var(--savings-bg);
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.savings-total:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(var(--primary-purple-rgb, 155, 81, 224), 0.1);
+}
+
+.savings-total-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.savings-total-amount {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.savings-percent {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 12px;
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.show-all {
+    color: var(--primary-purple);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.arrow-right {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border-radius: 8px; /* Добавим скругление для эффекта наведения */
+    padding: 5px; /* Небольшой отступ, чтобы фон был виден */
+    margin-left: -5px; /* Компенсируем padding */
+    margin-right: -5px;
+}
+
+.activity-item:hover {
+    background-color: var(--menu-hover); /* Легкий фон при наведении */
+    transform: translateX(4px);
+}
+
+.activity-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-item:hover .activity-icon {
+    transform: scale(1.15) rotate(5deg); /* Увеличение и легкий поворот иконки */
+    box-shadow: 0 0 8px currentColor; /* Тень цветом самой иконки */
+}
+
+.activity-icon.positive {
+    background-color: var(--positive-bg);
+    color: var(--green);
+}
+
+.activity-icon.negative {
+    background-color: var(--negative-bg);
+    color: var(--red);
+}
+
+.activity-details {
+    flex: 1;
+    border-bottom: 1px solid var(--activity-border);
+    padding-bottom: 15px;
+    overflow: hidden;
+}
+
+.activity-item:last-child .activity-details {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.activity-main {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.activity-title {
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.activity-amount {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.activity-amount.positive {
+    color: var(--green);
+}
+
+.activity-amount.negative {
+    color: var(--red);
+}
+
+.activity-subtitle {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.activity-subtitle > div:first-child {
+    flex-grow: 1;
+    word-break: break-word;
+}
+
+.activity-date {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.dashboard {
+    width: 100%;
+}
+
+.container.mx-auto.px-4 {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 1280px;
+}
+
+.show-all:hover {
+    color: var(--light-purple);
+    text-decoration: underline;
+}
+
+.show-all .arrow-right {
+    transition: transform 0.2s ease;
+}
+
+.show-all:hover .arrow-right {
+    transform: translateX(3px); /* Сдвигаем стрелку */
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+.card, .stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-theme .stat-card {
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+}
+
+.card:hover, .stat-card:hover {
+    transform: translateY(-5px) scale(1.01); /* Подъем и легкое увеличение */
+    box-shadow: var(--card-hover-shadow); /* Используем переменную для тени */
+}
+
+body.light-theme .card:hover, body.light-theme .stat-card:hover {
+    box-shadow: var(--card-hover-shadow-light);
+}
+
+.activity-section {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .sidebar-toggle {
+        display: none;
+    }
+
+    .sidebar {
+        transform: translateX(0);
+        width: var(--sidebar-width);
+        padding: 20px;
+        position: fixed;
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(0);
+        width: var(--sidebar-width);
+    }
+
+    .main-content {
+        padding-left: calc(var(--sidebar-width) + 30px);
+    }
+
+    .main-content.sidebar-collapsed {
+        padding-left: 30px;
+    }
+
+    .header-title {
+        font-size: 28px;
+    }
+
+    .btn {
+        font-size: initial;
+    }
+
+    .balance-amount {
+        font-size: 32px;
+    }
+
+    .time-filter {
+        padding: 6px 15px;
+        font-size: 14px;
+    }
+
+    .half-card {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    .activity-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        border-right: none;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+    body.light-theme .sidebar {
+        box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        width: var(--sidebar-width);
+    }
+
+    .main-content {
+        padding-left: 20px;
+        /* padding-right: calc(15px + 12px + 10px + 20px); */
+         padding-top: 20px; /*calc(var(--header-height) + 20px); */
+    }
+
+    .main-content.sidebar-open {
+        filter: blur(2px);
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .action-buttons {
+        width: 100%;
+        justify-content: space-around;
+    }
+    .btn {
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .balance-card .percent-change {
+        position: static;
+        margin-top: 5px;
+        justify-content: flex-start;
+    }
+
+    .cashflow-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .time-filters {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .time-filter {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .cards-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .half-card {
+        flex-basis: 100%;
+    }
+
+    .activity-main, .activity-subtitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+    .activity-amount {
+        margin-top: 3px;
+    }
+    .activity-date {
+        text-align: left;
+        margin-top: 3px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding-right: calc(15px + 12px + 10px + 10px);
+    }
+    .logo-text {
+        font-size: 20px;
+    }
+    /* .user-profile > div:not(.user-avatar) { } */
+
+    .user-info {
+        font-size: 13px;
+    }
+    .level-bar {
+        width: 60px;
+    }
+
+    .btn {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    .header-title {
+        font-size: 22px;
+    }
+    .balance-amount {
+        font-size: 24px;
+    }
+    .time-filter {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+}

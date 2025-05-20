@@ -1,122 +1,186 @@
-{% extends "base.html" %}
+{% extends "base-dashboard.html" %}
 
-{% block title %}Dashboard - Salvate{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
-{% block content %}
-<div class="dashboard">
-    <div class="container mx-auto px-4">
-        <h1 class="text-3xl font-bold text-white mb-8">Dashboard</h1>
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3 class="text-gray-400">Total Users</h3>
-                <p id="totalUsers" class="text-purple-500">Loading...</p>
-            </div>
-            <div class="stat-card">
-                <h3 class="text-gray-400">Active Subscriptions</h3>
-                <p id="activeSubscriptions" class="text-purple-500">Loading...</p>
-            </div>
-            <div class="stat-card">
-                <h3 class="text-gray-400">Total Revenue</h3>
-                <p id="totalRevenue" class="text-purple-500">Loading...</p>
+{% block content_dashboard %}
+
+    <div class="main-content">
+        <div class="header">
+            <div class="header-title">Кошелёк</div>
+            <div class="action-buttons">
+                <button class="btn btn-income">
+                    <span class="btn-icon">+</span> Доход
+                </button>
+                <button class="btn btn-expense">
+                    <span class="btn-icon">−</span> Расход
+                </button>
             </div>
         </div>
 
-        <div class="recent-activity mt-12">
-            <h2 class="text-2xl font-bold text-white mb-6">Recent Activity</h2>
-            <div class="activity-grid">
-                <div class="activity-section">
-                    <h3 class="text-gray-400 mb-4">Recent Subscriptions</h3>
-                    <div id="recentSubscriptions" class="space-y-4">
-                        <div class="animate-pulse">
-                            <div class="h-4 bg-gray-700 rounded w-3/4"></div>
-                            <div class="h-4 bg-gray-700 rounded w-1/2 mt-2"></div>
+        <div class="card balance-card">
+            <div class="percent-change positive" id="incomePercentChange">
+                +2.4%
+                <div class="arrow-up"><i class="fa-solid fa-square-arrow-up-right"></i></div>
+            </div>
+            <div class="card-label">Баланс</div>
+            <div class="balance-amount">124,500 ₸</div>
+        </div>
+
+        <div class="card">
+            <div class="cashflow-header">
+                <div class="card-label">Денежный поток</div>
+                <div class="time-filters">
+                    <div class="time-filter active">День</div>
+                    <div class="time-filter">Неделя</div>
+                    <div class="time-filter">Месяц</div>
+                    <div class="time-filter">Год</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="cashflowChart"></canvas>
+            </div>
+        </div>
+
+        <div class="cards-row">
+            <div class="card half-card">
+                <div class="card-header-info">
+                    <div class="card-label">Доходы</div>
+                    <div class="percent-change positive" id="incomePercentChange">
+                        +2.4%
+                        <div class="arrow-up"><i class="fa-solid fa-square-arrow-up-right"></i></div>
+                    </div>
+                </div>
+                <div class="balance-amount">45,200 ₸</div>
+            </div>
+            <div class="card half-card">
+                 <div class="card-header-info">
+                    <div class="card-label">Расходы</div>
+                    <div class="percent-change negative" id="expensePercentChange">
+                        -1.5%
+                        <div class="arrow-down"><i class="fa-solid fa-square-arrow-up-right fa-rotate-90"></i></div>
+                    </div>
+                </div>
+                <div class="balance-amount">32,800 ₸</div>
+            </div>
+        </div>
+
+        <div class="cards-row">
+            <div class="card half-card">
+                <div class="card-label">Финансовые цели</div>
+                <div class="goal-item">
+                    <div>Новый ноутбук</div>
+                    <div>65%</div>
+                </div>
+                <div class="goal-progress">
+                    <div class="goal-bar" style="width: 65%"></div>
+                </div>
+
+                <div class="goal-item">
+                    <div>Отпуск</div>
+                    <div>40%</div>
+                </div>
+                <div class="goal-progress">
+                    <div class="goal-bar" style="width: 40%"></div>
+                </div>
+
+                <div class="goal-item">
+                    <div>Новый телефон</div>
+                    <div>85%</div>
+                </div>
+                <div class="goal-progress">
+                    <div class="goal-bar" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="card half-card">
+                <div class="card-label">Сбережения</div>
+                <div class="balance-amount">78,300 ₸</div>
+
+                <div class="savings-total">
+                    <div class="savings-total-label">Всего отложено</div>
+                    <div class="savings-total-amount">245,600 ₸</div>
+                    <div class="percent-change positive savings-percent">
+                        +12.5%
+                        <div class="arrow-up"><i class="fa-solid fa-square-arrow-up-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="activity-header">
+                <div class="card-label">Недавняя активность</div>
+                <div class="show-all">Показать все <span class="arrow-right">›</span></div>
+            </div>
+
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="activity-icon positive">+</div>
+                    <div class="activity-details">
+                        <div class="activity-main">
+                            <div class="activity-title">Зарплата</div>
+                            <div class="activity-amount positive">+42,000 ₸</div>
+                        </div>
+                        <div class="activity-subtitle">
+                            <div>Основная работа</div>
+                            <div class="activity-date">24 сентября</div>
                         </div>
                     </div>
                 </div>
-                <div class="activity-section">
-                    <h3 class="text-gray-400 mb-4">Recent Users</h3>
-                    <div id="recentUsers" class="space-y-4">
-                        <div class="animate-pulse">
-                            <div class="h-4 bg-gray-700 rounded w-3/4"></div>
-                            <div class="h-4 bg-gray-700 rounded w-1/2 mt-2"></div>
+
+                <div class="activity-item">
+                    <div class="activity-icon negative">−</div>
+                    <div class="activity-details">
+                        <div class="activity-main">
+                            <div class="activity-title">Продукты</div>
+                            <div class="activity-amount negative">-3,450 ₸</div>
+                        </div>
+                        <div class="activity-subtitle">
+                            <div>Супермаркет "Перекрёсток"</div>
+                            <div class="activity-date">23 сентября</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon positive">+</div>
+                    <div class="activity-details">
+                        <div class="activity-main">
+                            <div class="activity-title">Возврат долга</div>
+                            <div class="activity-amount positive">+5,000 ₸</div>
+                        </div>
+                        <div class="activity-subtitle">
+                            <div>Друг отдал долг</div>
+                            <div class="activity-date">22 сентября</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon negative">−</div>
+                    <div class="activity-details">
+                        <div class="activity-main">
+                            <div class="activity-title">Кафе</div>
+                            <div class="activity-amount negative">-520 ₸</div>
+                        </div>
+                        <div class="activity-subtitle">
+                            <div>Перекус возле университета</div>
+                            <div class="activity-date">22 сентября</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 {% endblock %}
 
-{% block extra_css %}
-<style>
-    .dashboard {
-        padding: 2rem 0;
-        margin-top: 4rem;
-        background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.9));
-        min-height: calc(100vh - 4rem);
-    }
-    
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-    
-    .stat-card {
-        background: rgba(31, 41, 55, 0.7);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .stat-card h3 {
-        margin-bottom: 0.5rem;
-        color: #9ca3af;
-    }
-    
-    .stat-card p {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #a855f7;
-    }
-    
-    .activity-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-    
-    .activity-section {
-        background: rgba(31, 41, 55, 0.7);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .activity-section h3 {
-        margin-bottom: 1rem;
-        color: #9ca3af;
-    }
-    
-    .activity-item {
-        padding: 1rem;
-        border-bottom: 1px solid rgba(75, 85, 99, 0.3);
-    }
-    
-    .activity-item:last-child {
-        border-bottom: none;
-    }
-</style>
+{% block extra_css_dashboard %}
+
 {% endblock %}
 
-{% block extra_js %}
-<script>
+{% block extra_js_dashboard %}
+
+<!-- <script>
     // Check if user is logged in
     const token = localStorage.getItem('token');
     if (!token) {
@@ -161,20 +225,20 @@
                 const subscriptionsHtml = data.recent_subscriptions.map(sub => `
                     <div class="activity-item">
                         <p class="text-white font-medium">${sub.id}</p>
-                        <p class="text-gray-400">Status: ${sub.status}</p>
+                        <p>Status: ${sub.status}</p>
                         <p class="text-purple-400">Price: $${sub.price}</p>
                     </div>
                 `).join('');
-                document.getElementById('recentSubscriptions').innerHTML = subscriptionsHtml || '<p class="text-gray-400">No recent subscriptions</p>';
+                document.getElementById('recentSubscriptions').innerHTML = subscriptionsHtml || '<p>No recent subscriptions</p>';
                 
                 // Display recent users
                 const usersHtml = data.recent_users.map(user => `
                     <div class="activity-item">
                         <p class="text-white font-medium">${user.email}</p>
-                        <p class="text-gray-400">${user.full_name || user.username}</p>
+                        <p>${user.full_name || user.username}</p>
                     </div>
                 `).join('');
-                document.getElementById('recentUsers').innerHTML = usersHtml || '<p class="text-gray-400">No recent users</p>';
+                document.getElementById('recentUsers').innerHTML = usersHtml || '<p>No recent users</p>';
             } else {
                 throw new Error('Failed to fetch activity');
             }
@@ -192,5 +256,6 @@
         fetchStats();
         fetchActivity();
     }, 30000);
-</script>
-{% endblock %} 
+</script> -->
+
+{% endblock %}
