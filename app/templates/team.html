@@ -1,0 +1,89 @@
+
+{% extends "base.html" %}
+
+{% block title %}Salvate - Команда проекта{% endblock %}
+
+{% block content %}
+    <section class="team-page-section">
+        <div class="container">
+            <h1>Наша Команда</h1>
+            <p class="section-subtitle">Познакомьтесь с талантливыми людьми, которые создают и развивают Salvate, чтобы помочь вам достичь финансового благополучия.</p>
+
+            <div class="team-grid">
+                <article class="team-member-card">
+                    <div class="team-member-avatar-placeholder">
+                        <img src="/static/images/team/mad.png" alt="mad">
+                    </div>
+                    <h3>Серкебаев Мадияр</h3>
+                    <p class="team-member-title">CEO & Основатель</p>
+                    <p class="team-member-bio">Мадияр не имеет 10 лет опыта в финтех-индустрии зато, страстно желает упростить управление личными финансами для всех.</p>
+                    <div class="team-member-socials">
+                        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </article>
+
+                <article class="team-member-card">
+                    <div class="team-member-avatar-placeholder">
+                        <img src="/static/images/team/zhenish.png" alt="zhenish">
+                    </div>
+                    <h3>Максат Женис</h3>
+                    <p class="team-member-title">Разработчик</p>
+                    <p class="team-member-bio">Женис - мастер кода, ответственность это не про него, но архитектуру и стабильность нашего приложения на его плечах. Любит сложные задачи и кофе.</p>
+                    <div class="team-member-socials">
+                        <a href="#" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </article>
+
+                <article class="team-member-card">
+                    <div class="team-member-avatar-placeholder">
+                        <img src="" alt="">
+                    </div>
+                    <h3>...</h3>
+                    <p class="team-member-title">Дизайнер UX/UI</p>
+                    <p class="team-member-bio">... создает интуитивно понятный и красивый интерфейс для Salvate, чтобы ваш опыт использования был максимально приятным.</p>
+                    <div class="team-member-socials">
+                        <a href="#" aria-label="Dribbble" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" aria-label="Behance" title="Behance"><i class="fab fa-behance"></i></a>
+                    </div>
+                </article>
+
+                 <article class="team-member-card">
+                    <div class="team-member-avatar-placeholder">
+                        <img src="" alt="">
+                    </div>
+                    <h3>...</h3>
+                    <p class="team-member-title">Маркетинг</p>
+                    <p class="team-member-bio">... рассказывает миру о Salvate и помогает пользователям узнать обо всех преимуществах нашего сервиса.</p>
+                    <div class="team-member-socials">
+                        <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const isExpanded = mainNav.classList.toggle('active');
+                mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+                const icon = mobileMenuToggle.querySelector('i');
+                if (isExpanded) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+    </script>
+{% endblock %}

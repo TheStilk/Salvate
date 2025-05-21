@@ -3,7 +3,7 @@
     --bg-dark: #121212;
     --bg-card: #1e1e1e;
 
-    --text-color: #ffffff;
+    --text-color: #E0E0E0;
     --text-secondary-color: #8a8a8a;
 
     --primary-purple: #9b51e0;
@@ -39,16 +39,10 @@
 /* Светлая тема */
 body.light-theme {
     --bg-dark: #f5f5f5;
-    --bg-card: #E0E0E0; /* Можно использовать #FFFFFF для более чистого вида карточек */
+    --bg-card: #E0E0E0;
 
-    --text-color: #333333;
-    --text-secondary-color: #757575; /* Уже есть, используется для текста графика */
-
-    /* --- ДОБАВЛЕНО: Цвета для графика в светлой теме --- */
-    --income-purple: #7A3E9D;  /* Пример: более темный фиолетовый для доходов на светлом фоне */
-    --expense-purple: #B084CC; /* Пример: более светлый фиолетовый/лаванда для расходов на светлом фоне */
-    /* Вы можете подобрать другие цвета, которые лучше соответствуют вашему дизайну */
-    /* --- КОНЕЦ ДОБАВЛЕНИЯ --- */
+    ---text-color: #333333;
+    --text-secondary-color: #757575;
 
     --green: #4caf50;
     --red: #f44336;
@@ -58,7 +52,7 @@ body.light-theme {
     --profile-bg: rgba(155, 81, 224, 0.05);
     --progress-bg: rgba(155, 81, 224, 0.1);
     --savings-bg: rgba(155, 81, 224, 0.05);
-    --activity-border: rgba(155, 81, 224, 0.1); /* Уже есть, используется для сетки графика */
+    --activity-border: rgba(155, 81, 224, 0.1);
     --primary-purple-hover: #8945cb;
     --light-purple-hover: #a978d9;
     --card-hover-shadow: var(--card-hover-shadow-light);
@@ -75,7 +69,7 @@ body.light-theme {
 
 body {
     background-color: var(--bg-dark);
-    color: var(--text-color);
+    color: var(---text-color);
     display: flex;
     min-height: 100vh;
     position: relative;
@@ -88,7 +82,7 @@ body {
     right: 20px;
     z-index: 1001;
     background-color: var(--primary-purple);
-    color: var(--text-color);
+    color: var(---text-color);
     border: none;
     padding: 10px 12px;
     border-radius: 8px;

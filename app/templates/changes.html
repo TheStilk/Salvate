@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Salvate - Финансовый менеджер{% endblock %}
+
+{% block content %}
+    <section class="news-page-section">
+        <div class="container">
+            <h1>Новости Проекта</h1>
+            <p class="section-subtitle">Будьте в курсе последних обновлений и событий Salvate.</p>
+
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-card-image-placeholder">
+                        [Изображение новости 1]
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-card-meta">
+                            <span title="Дата публикации"><i class="fas fa-calendar-alt meta-icon"></i>20 Мая 2025</span>
+                            <span title="Автор"><i class="fas fa-user meta-icon"></i>Команда Salvate</span>
+                        </div>
+                        <h3><a href="single-news.html">Запуск новой функции: Умные бюджеты!</a></h3>
+                        <p class="news-card-excerpt">Мы рады объявить о запуске нашей новой революционной функции "Умные бюджеты", которая поможет вам еще эффективнее планировать свои финансы и достигать целей...</p>
+                        <a href="single-news.html" class="news-card-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                     <div class="news-card-image-placeholder">
+                        [Изображение новости 2]
+                    </div>
+                    <div class="news-card-content">
+                         <div class="news-card-meta">
+                            <span title="Дата публикации"><i class="fas fa-calendar-alt meta-icon"></i>10 Мая 2025</span>
+                            <span title="Автор"><i class="fas fa-user meta-icon"></i>Команда Salvate</span>
+                        </div>
+                        <h3><a href="single-news.html">Обновление безопасности: Двухфакторная аутентификация</a></h3>
+                        <p class="news-card-excerpt">Ваша безопасность - наш главный приоритет. В последнем обновлении мы добавили поддержку двухфакторной аутентификации для всех пользователей...</p>
+                        <a href="single-news.html" class="news-card-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                     <div class="news-card-image-placeholder">
+                        [Изображение новости 3]
+                    </div>
+                    <div class="news-card-content">
+                         <div class="news-card-meta">
+                            <span title="Дата публикации"><i class="fas fa-calendar-alt meta-icon"></i>28 Апреля 2025</span>
+                             <span title="Автор"><i class="fas fa-user meta-icon"></i>Команда Salvate</span>
+                        </div>
+                        <h3><a href="single-news.html">Salvate теперь доступно на Android!</a></h3>
+                        <p class="news-card-excerpt">Отличные новости для пользователей Android! После месяцев усердной работы мы наконец выпустили Salvate в Google Play Store. Скачивайте и управляйте...</p>
+                        <a href="single-news.html" class="news-card-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                 <article class="news-card">
+                     <div class="news-card-image-placeholder">
+                        [Изображение новости 4]
+                    </div>
+                    <div class="news-card-content">
+                         <div class="news-card-meta">
+                            <span title="Дата публикации"><i class="fas fa-calendar-alt meta-icon"></i>15 Апреля 2025</span>
+                            <span title="Автор"><i class="fas fa-user meta-icon"></i>Команда Salvate</span>
+                        </div>
+                        <h3><a href="single-news.html">Вебинар: Как эффективно копить с Salvate</a></h3>
+                        <p class="news-card-excerpt">Присоединяйтесь к нашему бесплатному вебинару, где мы расскажем о стратегиях накопления и как наше приложение может помочь вам в этом. Регистрация открыта!</p>
+                        <a href="single-news.html" class="news-card-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <nav class="pagination" aria-label="Навигация по страницам новостей">
+                <span class="current">1</span>
+                <a href="#">2</a>
+                <!-- <a href="#">3</a> -->
+                <a href="#">&raquo;</a>
+            </nav>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const isExpanded = mainNav.classList.toggle('active');
+                mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+                const icon = mobileMenuToggle.querySelector('i');
+                if (isExpanded) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+    </script>
+{% endblock %}

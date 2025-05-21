@@ -28,82 +28,84 @@ document.addEventListener('DOMContentLoaded', function() {
     const cashflowChartElement = document.getElementById('cashflowChart');
     let cashflowChart;
 
-    if (cashflowChartElement) {
-        const ctx = cashflowChartElement.getContext('2d');
-        cashflowChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: currentChartData.labels,
-                datasets: [
-                    {
-                        label: 'Доходы',
-                        data: currentChartData.income,
-                        borderColor: getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim(),
-                        backgroundColor: hexToRgba(getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim(), 0.1),
-                        tension: 0.3,
-                        fill: true,
-                        pointRadius: 4,
-                        pointBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim(),
-                        pointBorderColor: '#fff',
-                        pointHoverRadius: 6,
-                        pointHoverBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim(),
-                        pointHoverBorderColor: '#fff'
+if (cashflowChartElement) {
+    const ctx = cashflowChartElement.getContext('2d');
+    cashflowChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: currentChartData.labels,
+            datasets: [
+                {
+                    label: 'Доходы',
+                    data: currentChartData.income,
+                    borderColor: getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim(),
+                    backgroundColor: hexToRgba(getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim(), 0.1),
+                    tension: 0.3,
+                    fill: true,
+                    pointRadius: 4,
+                    pointBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim(),
+                    pointBorderColor: '#fff',
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim(),
+                    pointHoverBorderColor: '#fff'
+                },
+                {
+                    label: 'Расходы',
+                    data: currentChartData.expense,
+                    borderColor: getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim(),
+                    backgroundColor: hexToRgba(getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim(), 0.1),
+                    tension: 0.3,
+                    fill: true,
+                    pointRadius: 4,
+                    pointBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim(),
+                    pointBorderColor: '#fff',
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim(),
+                    pointHoverBorderColor: '#fff'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false,
+                        drawBorder: false
                     },
-                    {
-                        label: 'Расходы',
-                        data: currentChartData.expense,
-                        borderColor: getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim(),
-                        backgroundColor: hexToRgba(getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim(), 0.1),
-                        tension: 0.3,
-                        fill: true,
-                        pointRadius: 4,
-                        pointBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim(),
-                        pointBorderColor: '#fff',
-                        pointHoverRadius: 6,
-                        pointHoverBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim(),
-                        pointHoverBorderColor: '#fff'
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        grid: {
-                            display: false,
-                            drawBorder: false
-                        },
-                        ticks: {
-                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
-                        }
-                    },
-                    y: {
-                        grid: {
-                            color: getComputedStyle(document.documentElement).getPropertyValue('--activity-border').trim(),
-                            drawBorder: false
-                        },
-                        ticks: {
-                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim(),
-                            callback: function(value) {
-                                if (value === 0) return '0';
-                                if (value >= 1000 || value <= -1000) return value / 1000 + 'K';
-                                return value;
-                            }
-                        },
-                        suggestedMin: 0,
+                    ticks: {
+                        // ИЗМЕНЕНО ЗДЕСЬ
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary-color').trim()
                     }
                 },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                        labels: {
-                            color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim(),
-                            usePointStyle: true,
-                            pointStyle: 'circle'
+                y: {
+                    grid: {
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--activity-border').trim(),
+                        drawBorder: false
+                    },
+                    ticks: {
+                        // И ИЗМЕНЕНО ЗДЕСЬ
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary-color').trim(),
+                        callback: function(value) {
+                            if (value === 0) return '0';
+                            if (value >= 1000 || value <= -1000) return value / 1000 + 'K';
+                            return value;
                         }
                     },
+                    suggestedMin: 0,
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary-color').trim(),
+                        usePointStyle: true,
+                        pointStyle: 'circle'
+                    }
+                },
                     tooltip: {
                         backgroundColor: document.body.classList.contains('light-theme') ? 'rgba(255, 255, 255, 0.9)' : 'rgba(30, 30, 30, 0.8)',
                         titleColor: document.body.classList.contains('light-theme') ? '#333333' : '#ffffff',
@@ -194,12 +196,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
 
+
     function updateChartColors(isLight) {
         if (!cashflowChart) return; // Guard clause if chart is not initialized
 
         const incomeColor = getComputedStyle(document.documentElement).getPropertyValue('--income-purple').trim();
         const expenseColor = getComputedStyle(document.documentElement).getPropertyValue('--expense-purple').trim();
-        const textSecondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim();
+        const textSecondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary-color').trim();
         const activityBorderColor = getComputedStyle(document.documentElement).getPropertyValue('--activity-border').trim();
         const tooltipBgColor = isLight ? 'rgba(255, 255, 255, 0.9)' : 'rgba(30, 30, 30, 0.8)';
         const tooltipTextColor = isLight ? '#333333' : '#ffffff';
@@ -207,10 +210,15 @@ document.addEventListener('DOMContentLoaded', function() {
         cashflowChart.data.datasets[0].borderColor = incomeColor;
         cashflowChart.data.datasets[0].backgroundColor = hexToRgba(incomeColor, 0.1);
         cashflowChart.data.datasets[0].pointBackgroundColor = incomeColor;
+        // Дополнительно можно обновить pointHoverBackgroundColor, если это необходимо
+        cashflowChart.data.datasets[0].pointHoverBackgroundColor = incomeColor;
+
 
         cashflowChart.data.datasets[1].borderColor = expenseColor;
         cashflowChart.data.datasets[1].backgroundColor = hexToRgba(expenseColor, 0.1);
         cashflowChart.data.datasets[1].pointBackgroundColor = expenseColor;
+        // Дополнительно можно обновить pointHoverBackgroundColor
+        cashflowChart.data.datasets[1].pointHoverBackgroundColor = expenseColor;
 
         cashflowChart.options.scales.x.ticks.color = textSecondaryColor;
         cashflowChart.options.scales.y.ticks.color = textSecondaryColor;
@@ -221,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cashflowChart.options.plugins.tooltip.bodyColor = tooltipTextColor;
 
         if (cashflowChart.options.plugins.legend.display) {
-             cashflowChart.options.plugins.legend.labels.color = textSecondaryColor;
+            cashflowChart.options.plugins.legend.labels.color = textSecondaryColor;
         }
         cashflowChart.update();
     }

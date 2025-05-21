@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}Salvate - Карьера{% endblock %}
+
+{% block content %}
+    <section class="careers-hero-section">
+        <div class="container">
+            <h1>Присоединяйтесь к нашей команде</h1>
+            <p class="section-subtitle">Мы ищем талантливых и увлеченных людей, готовых менять мир финансов к лучшему. Станьте частью Salvate!</p>
+            <a href="#open-positions" class="btn btn-primary">Смотреть вакансии</a>
+        </div>
+    </section>
+
+    <section class="company-culture-section">
+        <div class="container">
+            <h2>Почему стоит работать у нас?</h2>
+            <div class="culture-highlights">
+                <div class="highlight-item">
+                    <div class="icon-container"><i class="fas fa-lightbulb"></i></div>
+                    <h4>Инновации и рост</h4>
+                    <p>Работайте над передовыми решениями и постоянно развивайте свои навыки в динамичной среде.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="icon-container"><i class="fas fa-users"></i></div>
+                    <h4>Дружная команда</h4>
+                    <p>Станьте частью сплоченного коллектива профессионалов, где ценят каждого сотрудника.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="icon-container"><i class="fas fa-chart-line"></i></div>
+                    <h4>Влияние на продукт</h4>
+                    <p>Ваши идеи будут услышаны, и вы сможете напрямую влиять на развитие FinanceApp.</p>
+                </div>
+                 <div class="highlight-item">
+                    <div class="icon-container"><i class="fas fa-laptop-code"></i></div>
+                    <h4>Современный стек</h4>
+                    <p>Используйте новейшие технологии и подходы в разработке и управлении проектами.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="icon-container"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Обучение и развитие</h4>
+                    <p>Мы инвестируем в ваше профессиональное развитие, предлагая курсы, тренинги и менторство.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="icon-container"><i class="fas fa-balance-scale"></i></div>
+                    <h4>Баланс работы и жизни</h4>
+                    <p>Мы ценим ваше время и предлагаем гибкие условия для поддержания здорового баланса.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="open-positions-section" id="open-positions">
+        <div class="container">
+            <h2>Открытые вакансии</h2>
+
+            <div class="job-listings-container">
+                <article class="job-listing">
+                    <div class="job-header">
+                        <div class="job-title-meta">
+                            <h3>Senior Backend Developer (Python/FastAPI)</h3>
+                            <p class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Удаленно</span>
+                                <span><i class="fas fa-briefcase"></i> Полная занятость</span>
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-apply">Откликнуться</a>
+                    </div>
+                    <p class="job-description">Мы ищем опытного Backend-разработчика для усиления нашей команды. Вам предстоит работать над основной логикой приложения, API и интеграциями с финансовыми сервисами. Требуется глубокое знание Python, Django, PostgreSQL и опыт работы с высоконагруженными системами.</p>
+                </article>
+
+                <article class="job-listing">
+                     <div class="job-header">
+                        <div class="job-title-meta">
+                            <h3>Frontend Developer (React, Vue.js)</h3>
+                            <p class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Алматы, Казахстан (Гибрид)</span>
+                                <span><i class="fas fa-briefcase"></i> Полная занятость</span>
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-apply">Откликнуться</a>
+                    </div>
+                    <p class="job-description">Присоединяйтесь к нам для создания красивых и отзывчивых интерфейсов для Salvate. Мы ожидаем от вас уверенного владения React, Redux/Zustand, TypeScript, а также опыта в адаптивной верстке и оптимизации производительности.</p>
+                </article>
+
+                <article class="job-listing">
+                     <div class="job-header">
+                        <div class="job-title-meta">
+                            <h3>Product Marketing Manager</h3>
+                            <p class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Удаленно</span>
+                                <span><i class="fas fa-briefcase"></i> Полная занятость</span>
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-apply">Откликнуться</a>
+                    </div>
+                    <p class="job-description">Ищем креативного и стратегически мыслящего менеджера по продуктовому маркетингу для продвижения Salvate на рынке. Ваши задачи будут включать разработку маркетинговых кампаний, анализ рынка и взаимодействие с пользователями.</p>
+                </article>
+                
+                <!--
+                <div class="no-openings">
+                    <p><i class="fas fa-info-circle"></i> В данный момент у нас нет открытых вакансий, но мы всегда рады талантливым специалистам!</p>
+                    <p>Вы можете отправить свое резюме на <a href="mailto:hr@example.com">hr@example.com</a>, и мы свяжемся с вами, как только появится подходящая позиция.</p>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+{% endblock %}
+    
+{% block js %}
+    <script>
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const isExpanded = mainNav.classList.toggle('active');
+                mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+                const icon = mobileMenuToggle.querySelector('i');
+                if (isExpanded) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const viewJobsButton = document.querySelector('.careers-hero-section .btn-primary');
+        if (viewJobsButton && viewJobsButton.hash !== "") {
+            viewJobsButton.addEventListener('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    const hash = this.hash;
+                    const targetElement = document.querySelector(hash);
+                    if (targetElement) {
+
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - (document.querySelector('.main-header').offsetHeight || 70); // Adjust for sticky header
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                }
+            });
+        }
+</script>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Salvate - Центр помощи{% endblock %}
+
+{% block content %}
+    <section class="help-hero-section">
+        <div class="container">
+            <h1>Центр Помощи</h1>
+            <p class="section-subtitle">Нужна помощь? Найдите ответы на свои вопросы в нашей базе знаний или свяжитесь с нами.</p>
+            <form class="search-form" action="#" method="GET">
+                <input type="search" name="query" placeholder="Введите ваш вопрос или ключевые слова...">
+                <button type="submit"><i class="fas fa-search"></i> Поиск</button>
+            </form>
+        </div>
+    </section>
+
+   <section class="help-categories-section">
+        <div class="container">
+            <h2>Категории Помощи</h2>
+            <div class="categories-grid">
+                <article class="category-card">
+                    <a href="#"> <div class="icon-container"><i class="fas fa-rocket"></i></div>
+                        <h4>Начало работы</h4>
+                        <p>Узнайте, как настроить аккаунт и начать использовать Salvate.</p>
+                    </a>
+                </article>
+                <article class="category-card">
+                     <a href="#">
+                        <div class="icon-container"><i class="fas fa-user-cog"></i></div>
+                        <h4>Управление аккаунтом</h4>
+                        <p>Все о настройках профиля, безопасности и подписках.</p>
+                    </a>
+                </article>
+                <article class="category-card">
+                     <a href="#">
+                        <div class="icon-container"><i class="fas fa-cogs"></i></div>
+                        <h4>Функции и Возможности</h4>
+                        <p>Подробные руководства по всем инструментам нашего приложения.</p>
+                    </a>
+                </article>
+                <article class="category-card">
+                     <a href="#">
+                        <div class="icon-container"><i class="fas fa-tools"></i></div>
+                        <h4>Устранение неполадок</h4>
+                        <p>Решения распространенных проблем и технические вопросы.</p>
+                    </a>
+                </article>
+                 <article class="category-card">
+                     <a href="#">
+                        <div class="icon-container"><i class="fas fa-file-invoice-dollar"></i></div>
+                        <h4>Счета и Транзакции</h4>
+                        <p>Как добавлять, редактировать и управлять своими финансами.</p>
+                    </a>
+                </article>
+                 <article class="category-card">
+                     <a href="#">
+                        <div class="icon-container"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Безопасность</h4>
+                        <p>Информация о защите ваших данных и советы по безопасности.</p>
+                    </a>
+                </article>
+                <article class="category-card">
+                     <a href="#">
+                        <div class="icon-container"><i class="fas fa-chart-pie"></i></div>
+                        <h4>Отчеты и Аналитика</h4>
+                        <p>Как создавать и понимать финансовые отчеты, анализировать траты.</p>
+                    </a>
+                </article>
+                <article class="category-card">
+                     <a href="#">
+                        <div class="icon-container"><i class="fas fa-project-diagram"></i></div>
+                        <h4>Интеграции</h4>
+                        <p>Подключение к банкам, импорт данных и синхронизация с другими сервисами.</p>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="popular-faqs-section" style="background-color: var(--card-background-color);">
+        <div class="container">
+            <h2>Популярные вопросы</h2>
+            <div class="faq-list-condensed">
+                <div class="faq-item-condensed">
+                    <a href="faq.html#question1"> <span>Как сбросить пароль?</span>
+                        <i class="fas fa-chevron-right faq-icon"></i>
+                    </a>
+                </div>
+                <div class="faq-item-condensed">
+                    <a href="faq.html#question2">
+                        <span>Как подключить банковский счет?</span>
+                        <i class="fas fa-chevron-right faq-icon"></i>
+                    </a>
+                </div>
+                <div class="faq-item-condensed">
+                    <a href="faq.html#question3">
+                        <span>На каких устройствах доступно приложение?</span>
+                        <i class="fas fa-chevron-right faq-icon"></i>
+                    </a>
+                </div>
+                 <div class="faq-item-condensed">
+                    <a href="faq.html#question4">
+                        <span>Как отменить подписку?</span>
+                        <i class="fas fa-chevron-right faq-icon"></i>
+                    </a>
+                </div>
+            </div>
+            <a href="/faq" class="view-all-faqs-link">Смотреть все FAQ <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section class="contact-support-section">
+        <div class="container">
+            <h2>Не нашли ответ?</h2>
+            <p>Наша команда поддержки всегда готова помочь. Свяжитесь с нами, и мы постараемся оперативно ответить на все ваши вопросы.</p>
+            <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Связаться с поддержкой</a>
+            </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const isExpanded = mainNav.classList.toggle('active');
+                mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+                const icon = mobileMenuToggle.querySelector('i');
+                if (isExpanded) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        const searchForm = document.querySelector('.search-form');
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const query = this.querySelector('input[name="query"]').value;
+                if (query.trim() !== "") {
+                    // In a real application, you would redirect to a search results page
+                    // or filter content dynamically.
+                    alert('Поиск по запросу: ' + query + '\n(Функционал поиска здесь не реализован)');
+                }
+            });
+        }
+    </script>
+{% endblock %}

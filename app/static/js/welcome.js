@@ -1,11 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth Scroll & Active Nav Link
+
+    const searchForm = document.querySelector('.search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = this.querySelector('input[name="query"]').value;
+            if (query.trim() !== "") {
+                alert('Поиск по запросу: ' + query + '\n(Функционал поиска здесь не реализован)');
+            }
+        });
+    }
+
+    function setupModal(openBtnId, closeBtnId, modalId) {
+        const openBtn = document.getElementById(openBtnId);
+        const closeBtn = document.getElementById(closeBtnId);
+        const modal = document.getElementById(modalId);
+
+        if (openBtn && modal) {
+            openBtn.addEventListener('click', () => {
+                modal.classList.add('active');
+                document.body.classList.add('modal-open');
+            });
+        }
+
+        if (closeBtn && modal) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            });
+        }
+
+        if (modal) {
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.classList.remove('modal-open');
+                }
+            });
+        }
+    }
+
+    setupModal('openTermsModalBtn', 'closeTermsModalBtn', 'termsModal');
+    setupModal('openPrivacyModalBtn', 'closePrivacyModalBtn', 'privacyModal');
+    
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            const activeModal = document.querySelector('.modal-overlay.active');
+            if (activeModal) {
+                activeModal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            }
+        }
+    });
+
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
     const navLinks = document.querySelectorAll('.main-nav a.nav-link');
     const sections = document.querySelectorAll('main section[id]');
 
     function changeLinkState() {
         let currentSectionId = '';
-        const offset = window.innerHeight * 0.4; // Trigger when 40% of the section is visible
+        const offset = window.innerHeight * 0.4;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;

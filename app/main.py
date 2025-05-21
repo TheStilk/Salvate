@@ -36,6 +36,26 @@ async def startup_event():
 async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/faq")
+async def dashboard_page(request: Request):
+    return templates.TemplateResponse("faq.html", {"request": request})
+
+@app.get("/changes")
+async def dashboard_page(request: Request):
+    return templates.TemplateResponse("changes.html", {"request": request})
+
+@app.get("/team")
+async def dashboard_page(request: Request):
+    return templates.TemplateResponse("team.html", {"request": request})
+
+@app.get("/career")
+async def dashboard_page(request: Request):
+    return templates.TemplateResponse("career.html", {"request": request})
+
+@app.get("/help-center")
+async def dashboard_page(request: Request):
+    return templates.TemplateResponse("help-center.html", {"request": request})
+
 @app.get("/auth/login")
 async def login_page(request: Request):
     return templates.TemplateResponse("auth/login.html", {"request": request})

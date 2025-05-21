@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Salvate - FaQ{% endblock %}
+
+{% block content %}
+    <section class="faq-page-section">
+        <div class="container">
+            <h1>Часто задаваемые вопросы</h1>
+            <p class="section-subtitle">Найдите ответы на самые популярные вопросы о нашем приложении.</p>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Что такое Salvate и как оно может мне помочь?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Salvate - это интуитивно понятное приложение для управления личными финансами, которое помогает вам отслеживать доходы и расходы, устанавливать бюджеты, анализировать траты и достигать ваших финансовых целей. Мы стремимся сделать управление деньгами простым и эффективным.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Безопасно ли использовать Salvate? Как защищены мои данные?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Мы очень серьезно относимся к безопасности ваших данных. Все данные шифруются с использованием передовых стандартов (например, AES-256) как при передаче, так и при хранении на наших серверах. Мы регулярно проводим аудиты безопасности и применяем лучшие практики для защиты вашей конфиденциальной информации. Двухфакторная аутентификация также доступна для дополнительного уровня защиты.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>На каких устройствах будет доступно Salvate?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Salvate скоро будет доступно на платформах iOS (iPhone, iPad) и Android (смартфоны, планшеты). Вы также можете получить доступ к веб-версии вашего аккаунта через любой современный браузер на вашем компьютере.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Сколько стоит использование Salvate?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>У нас есть несколько тарифных планов, включая бесплатную версию с базовым набором функций, которая отлично подходит для начала. Платные подписки открывают доступ к расширенным возможностям, таким как неограниченное количество счетов, синхронизация с банками и подробная аналитика. Подробную информацию о тарифах вы можете найти на нашей странице <a href="/#pricing">"Тарифы"</a>.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Как добавить новый доход или расход?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Это очень просто! На главном экране приложения нажмите на кнопку "+". Затем выберите тип операции (доход или расход), введите сумму, выберите категорию, укажите дату и, при желании, добавьте короткое описание или теги. Нажмите "Сохранить", и транзакция будет учтена.</p>
+                    </div>
+                </div>
+
+                 <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Могу ли я синхронизировать свои банковские счета?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Да, в наших платных тарифах мы предлагаем функцию безопасной синхронизации с большинством крупных банков. Это позволяет автоматически импортировать ваши транзакции, экономя ваше время и обеспечивая актуальность данных без ручного ввода. Мы используем надежные и проверенные технологии для обеспечения безопасности этого процесса.</p>
+                    </div>
+                </div>
+
+                 <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Куда я могу обратиться, если у меня возникли другие вопросы?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Если вы не нашли ответ на свой вопрос здесь, пожалуйста, свяжитесь с нашей службой поддержки. Вы можете сделать это через форму обратной связи в приложении (обычно в разделе "Настройки" -> "Поддержка") или написать нам на электронную почту <a href="mailto:help@salvate.org">help@salvate.org</a>. Мы постараемся помочь вам как можно скорее!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const isExpanded = mainNav.classList.toggle('active');
+                mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+                const icon = mobileMenuToggle.querySelector('i');
+                if (isExpanded) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const questionButton = item.querySelector('.faq-question');
+            const answerDiv = item.querySelector('.faq-answer');
+
+            if (questionButton && answerDiv) {
+                questionButton.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    faqItems.forEach(otherItem => {
+                         if (otherItem !== item && otherItem.classList.contains('active')) {
+                             otherItem.classList.remove('active');
+                             otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                             otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                         }
+                     });
+
+                    if (isActive) {
+                        item.classList.remove('active');
+                        questionButton.setAttribute('aria-expanded', 'false');
+                        answerDiv.style.maxHeight = null;
+                    } else {
+                        item.classList.add('active');
+                        questionButton.setAttribute('aria-expanded', 'true');
+                        answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}

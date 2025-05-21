@@ -1,15 +1,8 @@
+{% extends "base-auth.html" %}
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Salvate</title>
-    <link rel="stylesheet" href="/static/css/auth-style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
+{% block title %}Salvate - Регистрация{% endblock %}
+
+{% block content_auth %}
     <div class="auth-page-wrapper">
         <a href="/" class="back-to-home">
             <i class="fas fa-arrow-left"></i>
@@ -18,97 +11,64 @@
 
         <div class="auth-container">
             <div class="auth-illustration">
-                <img src="/static/images/auth_picture.jpg" alt="Registration" class="main-illustration">
+                <img src="/static/images/auth_picture.jpg" alt="Регистрация" class="main-illustration">
             </div>
             <div class="auth-form-container">
                 <div>
-                    <h1>Create an account</h1>
-                    <p class="subtitle">Join us and start managing your subscriptions</p>
+                    <h1>Создать аккаунт</h1>
+                    <p class="subtitle">Присоединяйтесь к нам и начните управлять своими подписками</p>
                 </div>
 
                 <button type="button" class="google-btn">
-                    <i class="fab fa-google"></i> Continue with Google
+                    <i class="fab fa-google"></i> Продолжить с Google
                 </button>
 
                 <div class="or-separator">
-                    <span>OR</span>
+                    <span>ИЛИ</span>
                 </div>
 
                 <form id="registerForm" action="/auth/register" method="POST">
                     <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        <label for="email">Адрес электронной почты</label>
+                        <input type="email" id="email" name="email" required placeholder="Введите адрес электронной почты">
                     </div>
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" required placeholder="Choose a username">
+                        <label for="username">Имя пользователя</label>
+                        <input type="text" id="username" name="username" required placeholder="Выберите имя пользователя">
                     </div>
                     <div class="form-group">
-                        <label for="full_name">Full Name</label>
-                        <input type="text" id="full_name" name="full_name" placeholder="Enter your full name">
+                        <label for="full_name">Полное имя</label>
+                        <input type="text" id="full_name" name="full_name" placeholder="Введите ваше полное имя">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password">Пароль</label>
                         <div class="password-wrapper">
-                            <input type="password" id="password" name="password" required placeholder="Create a password">
+                            <input type="password" id="password" name="password" required placeholder="Придумайте пароль">
                         </div>
                     </div>
                     <div class="form-group terms-group">
                         <input type="checkbox" id="terms" name="terms" required>
                         <label for="terms">
-                            I agree to the <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>
+                            Я согласен с <button id="openTermsModalBtn" class="footer-link-button">Условия использования</button>
+                            и <button id="openPrivacyModalBtn" class="footer-link-button">Политика конфиденциальности</button>
                         </label>
                     </div>
-                    <button type="submit" class="submit-btn">Create account</button>
+                    <button type="submit" class="submit-btn">Создать аккаунт</button>
                 </form>
 
                 <div class="auth-link">
                     <p>
-                        Already have an account?
-                        <a href="/auth/login">Sign in</a>
+                        Уже есть аккаунт?
+                        <a href="/auth/login">Войти</a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="page-footer">
-        <p>&copy; 2025 Salvate. Все права защищены.</p>
-    </footer>
+{% endblock %}
 
-    <!--
-    <script>
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData.entries());
-
-            console.log('Form data to be sent:', data);
-
-            try {
-                const response = await fetch('/api/auth/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    alert('Registration successful! Please login.');
-                    window.location.href = '/auth/login';
-                } else {
-                    const error = await response.json();
-                    alert(error.detail || 'Registration failed. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error during registration:', error);
-                alert('An error occurred during registration. Check the console for details.');
-            }
-        });
-    </script>
-    -->
-    
+{% block js_auth %}
     <script>
         document.getElementById('registerForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -148,6 +108,4 @@
             }
         });
     </script>
-</body>
-</html>
-
+{% endblock %}
